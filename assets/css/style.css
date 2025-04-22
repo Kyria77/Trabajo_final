@@ -1,0 +1,80 @@
+/*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+-*-*-*-*-*-*-*-*-*-*-*-*-*-* ESTILOS GENERALES *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
+@font-face{
+    font-family: Lato;
+    src: url(../font/Lato-Regular.ttf);
+}
+@font-face{
+    font-family: Lato bold;
+    src: url(../font/Lato-Bold.ttf);
+}
+@font-face{
+    font-family: Lato italic;
+    src: url(../font/Lato-Italic.ttf);
+}
+@font-face{
+    font-family: Lato bold italic;
+    src: url(../font/Lato-BoldItalic.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    max-width: 100%;
+    min-height: 100vh;
+    font-family:Lato;
+    font-size: 16px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+/*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* HEADER *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
+header{
+    padding: 1.3em;
+    gap: 1em;
+    background-color: black;
+    color: white;
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+.header_content{
+    margin-left: .9em;
+}
+.nav_content{
+    margin-bottom: 1em;
+}
+.navLinks{
+    width: 92%;
+    display: flex;
+    gap: 1.5em;
+    list-style: none;
+    font-size: 20px;
+    font-family: 'Lato bold';
+    justify-content:end
+}
+.navLinks a{
+    text-decoration: none;
+    color: white;
+    transition: .6s all ease;
+}
+.navLinks a:hover{
+    font-size: 23px;
+    color: bisque;
+}
+.presentation_content{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: .4em;
+}
+.inn{
+    border-bottom: 3px solid #ffed00;
+}
