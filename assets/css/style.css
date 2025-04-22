@@ -78,3 +78,33 @@ header{
 .inn{
     border-bottom: 3px solid #ffed00;
 }
+
+
+
+
+/*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* FOOTER *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
+footer{
+    padding: 1.3em;
+    gap: 1em;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content:space-between
+}
+.redes{
+    padding: 1.5em;
+    margin-left: 1.5em;
+    list-style: none;
+    display: flex;
+    gap: 1.5em;
+    justify-content: center;
+    align-content: center;
+}
+.footer_copyright{
+    text-align: center;
+}
+.footer_logo{
+    align-content: center;
+}
