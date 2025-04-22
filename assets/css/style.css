@@ -79,7 +79,52 @@ header{
     border-bottom: 3px solid #ffed00;
 }
 
-
+/*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* MAIN   *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
+main{
+    margin: 1.5em;
+    display: flex;
+    gap: 1em;
+}
+.main_content{
+    /*border: 1px solid black;*/
+    width: 33%;
+    height: 650px;
+}
+.steam_dia{
+    background-image: url(../images/steam_dia.png);
+    padding-top: 1.5em;
+}
+.inspirate{
+    background-image: url(../images/inspirate.png);
+}
+.agenda{
+    background-image: url(../images/agenda.png);
+    padding-left: 2em;
+}
+.steam_dia, .inspirate, .agenda{
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.amarillo{
+    background-color: rgba(255, 237, 0, .7);
+    width: 70%;
+    height: 450px;
+    margin-top: 1.8em;
+}
+.azul{
+    background-color: rgba(0, 159, 227, .7);
+    width: 65%;
+    height: 475px;
+}
+.rosa{
+    background-color: rgba(230, 0, 126, .7);
+    width: 75%;
+    height: 475px;
+    margin-left: 2.4em;
+}
 
 
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
