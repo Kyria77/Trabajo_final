@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,7 @@
         <!--Comenzamos con Header, nuetra cabecera con el logo, la barra de navegación e introducción-->
         <header>
             <div class="logo">
-                <img src="./assets/images/Steam blanco.png" alt="logo steam&Co" width="414" height="216" title="Logo">
+                <img src="./assets/images/Steam_blanco.png" alt="logo steam&Co" width="414" height="216" title="Logo">
             </div>
             <div class="header_content">
                 <nav class="nav_content">
@@ -25,6 +25,16 @@
                         <li><a class="out" href="/views/noticias.html">STEAM AL DÍA</a></li>
                         <li><a class="out" href="/views/registro.html">REGISTRARSE</a></li>
                         <li><a class="out" href="/views/login.html">LOGIN</a></li>
+                        <li>
+                            <a href="https://www.instagram.es" title="Enlace a Instagram">
+                                <img src="./assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com" title="Enlace a YouTube">
+                                <img src="./assets/images/youtube.png" alt="icono de YouTube" width="32" height="32" title="icono YouTube">
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <div class="presentation_content">
@@ -39,31 +49,66 @@
 
         <!--Comenzamos con Main. Consta de XXX secciones:-->
         <main>
-            <div class="main_content steam_dia">
-                <div class="amarillo">
-                    <h2>STEAM AL DÍA</h2>
-                    <h3>Noticias</h3>
-                    <p>Lignosat, el satélite hecho de madera; la lectura y las matemáticas...</p>
-                    <p>Un nuevo instrumento español,portátil, de bajo coste, rápido y no invasivo contra las temidas piedras del riñón...</p>
-                    <h3>Perfiles</h3>
-                    <p>M.ª Carmen Martínez Fernández</p>
-                    <h3>Biblioteca</h3>
-                    <p>Si no funciona ¡evoluciona!</p>
-                    <a href="./views/noticias.html">
-                        <input type="button" name="noticias" value="VER MÁS">
-                    </a>
+            <div class="main_sections_content">
+                <div class="steam_dia">
+                    <div class="amarillo">
+                        <h2>STEAM AL DÍA</h2>
+                        <h3>Noticias</h3>
+                        <p>Lignosat, el satélite hecho de madera; la lectura y las matemáticas...</p>
+                        <p>Un nuevo instrumento español,portátil, de bajo coste, rápido y no invasivo contra las temidas piedras del riñón...</p>
+                        <h3>Perfiles</h3>
+                        <p>M.ª Carmen Martínez Fernández</p>
+                        <h3>Biblioteca</h3>
+                        <p>Si no funciona ¡evoluciona!</p>
+                        <div class="main_btn">
+                            <a href="./views/noticias.html">VER MÁS</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="main_content inspirate">
+                    <div class="azul">
+                        <h2>INSPÍRATE</h2>
+                        <h3>Ideas para tus clases</h3>
+                        <p>Duelo de barbudos.</p>
+                        <p>Un juego de mesa inventado hace 5000años.</p>
+                        <h3>Con A de STEAM</h3>
+                        <p>La revolución industrial: máquinas de vapor y velocidad</p>
+                        <h3>Haz comunidad</h3>
+                        <div class="main_btn">
+                            <a href="./views/noticias.html">VER MÁS</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="main_content agenda">
+                    <div class="rosa">
+                        <h2>AGENDA</h2>
+                        <h3>Eventos</h3>
+                        <p>4º Congreso de Ciberseguridad de Andalucía - Málaga.</p>
+                        <p>Exposición: Cazadores de dragones.</p>
+                        <h3>Agenda</h3>
+                        <p>Aniversario del nacimiento de Marie Anne Victoire Gillain Boivin</p>
+                        <p>Día Internacional de la Tierra</p>
+                        <div class="main_btn">
+                            <a href="./views/noticias.html">VER MÁS</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="main_content inspirate">
-                <div class="azul">
-                    <h2>INSPÍRATE</h2>
+
+            <div class="main_sections_content">
+                <div class="text_presentation">
+                    <h2>Nuestra misión</h2>
+                    <h3>¿Quiénes somos?</h3>
+                    <p>El equipo de STEAM & CO está formado por <span class="bold">profesionales</span> de perfiles muy diversos, <span class="bold">que colaboran constantemente</span> para dejar huella en la educación y la cultura, y encontrar la mejor manera de enseñar y aprender materias del ámbito STEM.</p>
+                    <p>Somos profesionales en la <span class="bold">enseñanza de las ciencias y la edición</span> de materias tan diversas y apasionantes como las <span class="bold">matemáticas, la biología y geología, la física y química, la tecnología y digitalización, la cultura científica …</span>; y también contamos con especialistas en <span class="bold">bellas artes, en diseño gráfico, en comunicación audiovisual…</span></p>
+                    <p>El equipo que hacemos posible STEAM & CO <span class="bold">crece cada día</span>, al igual que los contenidos de este espacio.
+                        Cuando nos descubras más, seguro que <span class="bold">tú también entrarás a formar parte del equipo</span>.</p>
+                </div>
+                <div class="img_presentation">
+                    <img src="/assets/images/presentation_img.png" alt="mujer con una niña realizando un experimento" width="436" height="555">
                 </div>
             </div>
-            <div class="main_content agenda">
-                <div class="rosa">
-                    <h2>AGENDA</h2>
-                </div>
-            </div>
+            
         </main>
 
         <!--Comenzamos con el Footer, con los derechos, datos de la empresa, iconos redes sociales-->

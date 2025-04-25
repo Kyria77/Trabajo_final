@@ -82,15 +82,12 @@ header{
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* MAIN   *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
-main{
+
+.main_sections_content{
     margin: 1.5em;
+    margin-bottom: 2em;
     display: flex;
     gap: 1em;
-}
-.main_content{
-    /*border: 1px solid black;*/
-    width: 33%;
-    height: 650px;
 }
 .steam_dia{
     background-image: url(../images/steam_dia.png);
@@ -104,6 +101,9 @@ main{
     padding-left: 2em;
 }
 .steam_dia, .inspirate, .agenda{
+    /*border: 1px solid black;*/
+    width: 33%;
+    height: 650px;
     background-size:cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -129,24 +129,55 @@ main{
     padding: 1.5em;
     font-family: 'Lato bold';
 }
-.main_content h3{
+.main_sections_content h3{
     font-size: 21px;
     margin-top: 1.5em;
 }
-.main_content h2{
+.main_sections_content h2{
     margin-bottom: 2em;
 }
-.main_content p{
+.main_sections_content p{
     margin-bottom: .5em;
 }
-.main_content input{
+.main_sections_content input{
     background-color: black;
     padding: .5em;
     color: white;
     border-radius: 10px;
     cursor: pointer;
 }
-
+.main_btn{
+    width: 35%;
+    border-top: 2px solid rgb(128, 127, 127);
+    border-left: 2px solid rgb(128, 127, 127);
+    background-color: black;
+    padding: .5em;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+.main_btn a{
+    color: white;
+    text-decoration: none;
+}
+.main_btn:hover{
+    background-color: rgb(63, 62, 62);
+    width: 37%;
+}
+.text_presentation{
+    width: 70%;
+    padding: 2em;
+    font-size: 20px;
+    text-align: justify;
+}
+.text_presentation h3{
+    padding-bottom: 1em;
+}
+.bold{
+    font-family: 'Lato bold';
+}
 
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* FOOTER *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
