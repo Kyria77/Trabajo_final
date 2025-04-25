@@ -57,9 +57,19 @@
     display: flex;
     gap: 2em;
 }
+.noticia_img{
+    width: auto;
+}
 .noticia_texto, .noticia{
     text-align: justify;
     display: flex;
     flex-direction: column;
     gap: 1em;
+}
+.noticia img{
+    align-self: center;
+}
+.img_retoque{
+    width: 70%;
+    height: auto;
 }
