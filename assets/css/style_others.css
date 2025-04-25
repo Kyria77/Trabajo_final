@@ -1,4 +1,65 @@
+/*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* MAIN STEAM DIA *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 .logo img{
     width: 65%;
     height: auto;
+}
+
+.cartel_steamAlDia{
+    width: 20%;
+    background-color: #ffed00;
+    padding: 1.3em;
+    text-align: center;
+}
+.steam_dia_noticias{
+    background-image: url(../images/noticias.png);
+    padding-top: 1.5em;
+}
+.steam_dia_perfiles{
+    background-image: url(../images/steam_dia.png);
+    padding-top: 1.5em;
+}
+.steam_dia_biblioteca{
+    background-image: url(../images/biblioteca.png);
+    padding-top: 1.5em;
+}
+.steam_dia_noticias h3, .steam_dia_perfiles h3, .steam_dia_biblioteca h3{
+    padding-bottom: 1.5em;
+}
+
+/*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* MAIN NOTICIAS *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
+.main_cabecera{
+    display: flex;
+    width: 80%;
+}
+.main_navLinks{
+    display: flex;
+    margin-left: 4em;
+    padding-top: .9em;
+    gap: 1.5em;
+    list-style: none;
+    font-size: 24px;
+    font-family: 'Lato bold';
+}
+.main_navLinks a{
+    color: black;
+}
+.noticia{
+    margin: 1em;
+    padding: 1em;
+    padding-left: 2.5em;
+    padding-right: 2.5em;
+}
+.noticia_grueso{
+    display: flex;
+    gap: 2em;
+}
+.noticia_texto, .noticia{
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 }

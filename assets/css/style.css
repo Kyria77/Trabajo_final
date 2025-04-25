@@ -61,12 +61,12 @@ header{
     font-family: 'Lato bold';
     justify-content:end
 }
-.navLinks a{
+.navLinks a, .main_navLinks a{
     text-decoration: none;
     color: white;
     transition: .6s all ease;
 }
-.navLinks a:hover, .navLinks_others a:hover{
+.navLinks a:hover{
     font-size: 23px;
     color: bisque;
 }
@@ -80,7 +80,7 @@ header{
 }
 
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
--*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* MAIN   *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* MAIN INDEX  *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 
 .main_sections_content{
@@ -100,7 +100,7 @@ header{
     background-image: url(../images/agenda.png);
     padding-left: 2em;
 }
-.steam_dia, .inspirate, .agenda{
+.steam_dia, .inspirate, .agenda, .steam_dia_noticias, .steam_dia_perfiles, .steam_dia_biblioteca{
     /*border: 1px solid black;*/
     width: 33%;
     height: 650px;
