@@ -59,6 +59,35 @@
                     </ul>
                 </nav>
             </div>
+            <div class="main_registro_content">
+                <div class="registro_presentacion">
+                    <p>El nombre de usuario será el email con el que te registraste.</p>
+                </div>
+    
+                <div class="formulario-container">
+                    <form class="form_login" id="form_login" name="form_login" method="post" action="#">
+                        <div class="infoForm-container">
+                            <div class="input-container">
+                                <label for="email">Usuario:</label>
+                                <input type="email" id="email" name="email">
+                                <small class="error" id="emailError"></small>
+                            </div>
+                            <div class="input-container">
+                                <label for="password">Contraseña:</label>
+                                <input type="password" id="password" name="password">
+                                <small class="error" id="passwordError"></small>
+                            </div>
+                            <div class="input_container password_show">
+                                <label for="check_password">Mostrar contraseña</label>
+                                <input type="checkbox" id="check_password">
+                            </div>
+                            <div class="button-container_login">
+                                <input type="submit" name="login" value="Iniciar sesión">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
             
         </main>
 
@@ -90,5 +119,7 @@
                 <img src="../assets/images/steam_footer.png" alt="logo steam&Co" width="166" height="81" title="Logo">
             </div>
         </footer>
+
+        <script src="../assets/scripts/show_password.js"></script>
     </body>
 </html>

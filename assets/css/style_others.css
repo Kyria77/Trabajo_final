@@ -132,12 +132,12 @@
     background-color: transparent;
     color: black;
 }
-.button-container{
+.button-container, .button-container_login{
     display: flex;
     flex-direction: column;
     margin-top: 20px;
 }
-.button-container button{
+.button-container input, .button-container_login input{
     padding: 10px 20px;
     border: none;
     border-radius: 10px;
@@ -145,7 +145,7 @@
     transition: all .3s ease;
     font-size: 20px;
 }
-.button-container button:hover{
+.button-container input:hover{
     background-color: rgb(181, 248, 114);
     transform: translateY(-5px);
 }
@@ -172,4 +172,8 @@
 }
 .inn_login{
     border-bottom: 3px solid rgb(200, 148, 248);
+}
+.button-container_login input:hover{
+    background-color: rgb(200, 148, 248);
+    transform: translateY(-5px);
 }
