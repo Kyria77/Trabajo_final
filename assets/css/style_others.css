@@ -81,6 +81,86 @@
 .cartel_registro{
     background-color: rgb(181, 248, 114);
 }
+.inn_registro{
+    border-bottom: 3px solid rgb(181, 248, 114);
+}
+.main_registro_content{
+    width: 68%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    line-height: 1.5em;
+}
+
+
+
+
+
+
+.formulario-container{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 1000px;
+    margin: .5em auto;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.infoForm-container, .envioForm-container{
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 22px;
+}
+.infoForm-container small{
+    font-size: 17px;
+}
+.input-container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 5px;
+}
+.input-container input{
+    padding: 5px;
+    border: none;
+    border-bottom: 2px solid black;
+    background-color: transparent;
+    color: black;
+}
+.button-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.button-container button{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all .3s ease;
+    font-size: 20px;
+}
+.button-container button:hover{
+    background-color: rgb(181, 248, 114);
+    transform: translateY(-5px);
+}
+.valido{
+    border-color: green;
+}
+.invalido{
+    border-color: red;
+}
+.error{
+    color: red;
+}
+
+
+
 
 
 
@@ -89,4 +169,7 @@
 -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 .cartel_login{
     background-color: rgb(200, 148, 248);
+}
+.inn_login{
+    border-bottom: 3px solid rgb(200, 148, 248);
 }

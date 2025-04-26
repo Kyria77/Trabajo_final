@@ -48,60 +48,70 @@
 
         <!--Comenzamos con Main. Consta de XXX secciones:-->
         <main>
-            <div class="cartel_registro">
-                <h2>REGISTRARME</h2>
+            <div class="main_cabecera">
+                <div class="cartel_registro">
+                    <h2>REGISTRARSE</h2>
+                </div>
+                <nav class="main_nav_content">
+                    <ul class="main_navLinks">
+                        <li><a class="inn_registro" href="#">Registrarse</a></li>
+                        <li><a class="out_registro" href="./login.html">Iniciar sesión</a></li>
+                    </ul>
+                </nav>
             </div>
-            <div class="registro_presentacion">
-                <p>Hola, soy el texto del registro</p>
+            <div class="main_registro_content">
+                <div class="registro_presentacion">
+                    <p>Nos alegramos de hayas tomado la decisión de acompañarnos en esta maravillosa misión de enseñar, motivar y divertir mediante las ciencias.</p>
+                    <p>El registro es totalmente gratuito y una vez registrado, podrás acceder a innumerables contenidos de diversas índoles que te darán muchas ideas para ayudarte con la programación didáctica de cada día.</p>
+                </div>
+    
+                <div class="formulario-container">
+                    <form class="form_registro" id="form_registro" name="form_registro" method="post" action="#">
+                        <div class="infoForm-container">
+                            <div class="input-container">
+                                <label for="nombre">Nombre:</label>
+                                <input type="text" id="nombre" name="nombre">
+                                <small class="error" id="nombreError"></small>
+                            </div>
+                            <div class="input-container">
+                                <label for="apellidos">Apellidos:</label>
+                                <input type="text" id="apellidos" name="apellidos">
+                                <small class="error" id="apellidosError"></small>
+                            </div>
+                            <div class="input-container">
+                                <label for="telefono">Teléfono:</label>
+                                <input type="tel" id="telefono" name="telefono">
+                                <small class="error" id="telefonoError"></small>
+                            </div>
+                            <div class="input-container">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email">
+                                <small class="error" id="emailError"></small>
+                            </div>
+                            <div class="input-container">
+                                <label for="fnac">Fecha de nacimiento:</label>
+                                <input type="date" id="fnac" name="fnac">
+                                <small class="error" id="fnacError"></small>
+                            </div>
+                            <div class="input-container">
+                                <label for="direccion">Dirección:</label>
+                                <input type="text" id="direccion" name="direccion">
+                                <small class="error" id="direccionError"></small>
+                            </div>
+                        </div>
+                        <div class="envioForm-container">
+                            <div class="input-container">
+                                <label for="privacidad">He leído la política de privacidad:</label>
+                                <input type="checkbox" id="privacidad" name="privacidad">
+                                <small class="error" id="privacidadError"></small>
+                            </div>
+                            <div class="button-container">
+                                <button type="submit">Registrarme</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-
-            <div class="formulario-container">
-                <form class="form_registro" id="form_registro" name="form_registro" method="post" action="#">
-                    <div class="infoForm-container">
-                        <div class="input-container">
-                            <label for="nombre">Nombre:</label>
-                            <input type="text" id="nombre" name="nombre">
-                            <small class="error" id="nombreError"></small>
-                        </div>
-                        <div class="input-container">
-                            <label for="apellidos">Apellidos:</label>
-                            <input type="text" id="apellidos" name="apellidos">
-                            <small class="error" id="apellidosError"></small>
-                        </div>
-                        <div class="input-container">
-                            <label for="telefono">Teléfono:</label>
-                            <input type="tel" id="telefono" name="telefono">
-                            <small class="error" id="telefonoError"></small>
-                        </div>
-                        <div class="input-container">
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" name="email">
-                            <small class="error" id="emailError"></small>
-                        </div>
-                        <div class="input-container">
-                            <label for="fnac">Fecha de nacimiento:</label>
-                            <input type="date" id="fnac" name="fnac">
-                            <small class="error" id="fnacError"></small>
-                        </div>
-                        <div class="input-container">
-                            <label for="direccion">Dirección:</label>
-                            <input type="text" id="direccion" name="direccion">
-                            <small class="error" id="direccionError"></small>
-                        </div>
-                    </div>
-                    <div class="envioForm-container">
-                        <div class="input-container">
-                            <label for="privacidad">He leído la política de privacidad:</label>
-                            <input type="checkbox" id="privacidad" name="privacidad">
-                            <small class="error" id="privacidadError"></small>
-                        </div>
-                        <div class="button-container">
-                            <button type="submit">Enviar</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            
         </main>
 
         <!--Comenzamos con el Footer, con los derechos, datos de la empresa, iconos redes sociales-->
