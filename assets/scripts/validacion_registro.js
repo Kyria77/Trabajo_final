@@ -38,7 +38,7 @@ function validarApellidos(){
 }
 function validarTelefono(){
     const telefono = telefonoInput.value;
-    const telefonoVal = /^[0-9\+]{1,12}$/;
+    const telefonoVal = /^[0-9]{1,12}$/;
     if(telefonoVal.test(telefono)){
         telefonoInput.classList.add('valido');
         telefonoInput.classList.remove('invalido');
@@ -64,7 +64,7 @@ function validarEmail(){
 }
 function validarPassword(){
     const password = passwordInput.value;
-    const passwordVal = "/^(?=.*[A-Z])(?=.*\d)(?=.*[.,_\-])[a-zA-Z\d.,_\-]{4,10}$/";
+    const passwordVal = /^(?=.*[A-Z])(?=.*\d)(?=.*[.,_\-])[a-zA-Z\d.,_\-]{4,10}$/;
     if(passwordVal.test(password)){
         passwordInput.classList.add('valido');
         passwordInput.classList.remove('invalido');
@@ -72,20 +72,7 @@ function validarPassword(){
     }else{
         passwordInput.classList.add('invalido');
         passwordInput.classList.remove('valido');
-        document.getElementById('passwordError').textContent = "Introduce un correo electrónico válido";
-    }
-}
-function validarFnac(){
-    const fnac = fnacInput.value;
-    const fnacVal = "/^([0][1-9]|[1-2][0-9]|3[0-1])\/(0[1-9]|1[0-2])\/\d{4}$/";
-    if(fnacVal.test(fnac)){
-        fnacInput.classList.add('valido');
-        fnacInput.classList.remove('invalido');
-        document.getElementById('fnacError').textContent = "";
-    }else{
-        fnacInput.classList.add('invalido');
-        fnacInput.classList.remove('valido');
-        document.getElementById('fnacError').textContent = "La fecha deberá constar de 2 dígitos para el día, primero. 2 dígitos para el mes, segundo. Y por último 4 dígitos para el año";
+        document.getElementById('passwordError').textContent = "La contraseña debe ser entre 4 y 10 caracteres y contener mayúscula, minúscula, 1 número y un caracter especial";
     }
 }
 function validarDireccion(){
@@ -112,113 +99,72 @@ function validarPrivacidad(){
         document.getElementById('privacidadError').textContent = "Acepte la política de privacidad";
     }
 }
+//Función para establecer el máximo de fecha en el día actual
+function ponerMaxHoy(input){
+    const hoy = new Date();
+    const anyo = hoy.getFullYear();
+    const mes = String(hoy.getMonth() + 1).padStart(2, '0');
+    const dia = String(hoy.getDate()).padStart(2, '0');
+    const hoyText = `${anyo}-${mes}-${dia}`;
+    input.max = hoyText;
+}
+function validarFnac(){
+    const fecha = fnacInput.value;
+    ponerMaxHoy(fnacInput);
+    if(!fecha){
+        fnacInput.classList.add('invalido');
+        fnacInput.classList.remove('valido');
+        document.getElementById('fnacError').textContent = "Por favor, introduce una fecha.";
+    } else if(fecha > fnacInput.max){
+        fnacInput.classList.add('invalido');
+        fnacInput.classList.remove('valido');
+        document.getElementById('fnacError').textContent = "La fecha no puede ser futura.";
+    } else{
+        fnacInput.classList.add('valido');
+        fnacInput.classList.remove('invalido');
+        document.getElementById('fnacError').textContent = "";
+    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//Función para resetear los estados de los campos del formulario.
 function resetFormulario(){
     formulario.reset();
     nombreInput.classList.remove('valido');
     apellidosInput.classList.remove('valido');
     telefonoInput.classList.remove('valido');
     emailInput.classList.remove('valido');
-    mensajeInput.classList.remove('valido');
-    pagoInput.classList.remove('valido');
+    passwordInput.classList.remove('valido');
+    fnacInput.classList.remove('valido');
+    direccionInput.classList.remove('valido');
     privacidadInput.classList.remove('valido');
 }
 
-nombreInput.addEventListener("input", validarNombre);
-apellidosInput.addEventListener("input", validarApellidos);
-telefonoInput.addEventListener("input", validarTelefono);
-emailInput.addEventListener("input", validarEmail);
-mensajeInput.addEventListener("input", validarMensaje);
-pagoInput.addEventListener("input", validarPago);
-privacidadInput.addEventListener("input", validarPrivacidad);
+nombreInput.addEventListener('input', validarNombre);
+apellidosInput.addEventListener('input', validarApellidos);
+telefonoInput.addEventListener('input', validarTelefono);
+emailInput.addEventListener('input', validarEmail);
+passwordInput.addEventListener('input', validarPassword);
+fnacInput.addEventListener('input', validarFnac);
+direccionInput.addEventListener('input', validarDireccion);
+privacidadInput.addEventListener('input', validarPrivacidad);
 
-//Calcular presupuesto
-document.addEventListener('DOMContentLoaded', function(){
-    const formacionSelect = document.getElementById("selectFormacion");
-    const pagosSelect = document.getElementById("pago");
-    const extraPrueba = document.querySelectorAll(".extra");
-    const resultadoInput = document.getElementById("presupuesto");
-
-    function calcularPresupuesto(){
-        let totalFormacion = 0;
-
-        const formacion = parseFloat(formacionSelect.value);
-        if(!isNaN(formacion)){
-            totalFormacion += formacion;
-        }
-
-        const pagos = parseFloat(pagosSelect.value);
-        let pagoDescuento = 0;
-        if(!isNaN(pagos)){
-            switch(pagos){
-                case 3:
-                    pagoDescuento = 0.10;
-                    break;
-                case 6:
-                    pagoDescuento = 0.15;
-                    break;
-                default:
-                    pagoDescuento = 0;
-            }
-        }
-
-        let extraResultado = 0;
-        extraPrueba.forEach(function(extra){
-            if(extra.checked){
-                extraResultado += parseFloat(extra.value);
-            }
-        });
-
-        let temporalSuma = totalFormacion + extraResultado;
-        let temporalDescuento = temporalSuma * pagoDescuento;
-        let presupuestoTotal = temporalSuma - temporalDescuento;
-        if(pagos === 3){
-            resultadoInput.value = presupuestoTotal*3 + "€ cada 3 meses";
-        }else if(pagos === 6){
-            resultadoInput.value = presupuestoTotal*6 + "€ cada 6 meses";
-        }else{
-            resultadoInput.value = presupuestoTotal + "€ cada mes";
-        }
-    };
-
-    formacionSelect.addEventListener('change', calcularPresupuesto);
-    pagosSelect.addEventListener('change', calcularPresupuesto);
-    
-    extraPrueba.forEach(function(extra){
-        extra.addEventListener("change", calcularPresupuesto);
-    })
-})
-
-//Envío formulario una vez que hayamos comprobado de nuevo.
-formulario.addEventListener("submit", function(event){
+//Comprobamos de nuevo y gestionamos si se envía el formulario o no
+formulario.addEventListener('submit', function(event){
     event.preventDefault();
     validarNombre();
     validarApellidos();
     validarTelefono();
     validarEmail();
-    validarMensaje();
-    validarPago();
+    validarPassword();
+    validarFnac();
+    validarDireccion();
     validarPrivacidad();
-     if(nombreInput.classList.contains('valido') && apellidosInput.classList.contains('valido') && telefonoInput.classList.contains('valido') && emailInput.classList.contains('valido') && mensajeInput.classList.contains('valido') && pagoInput.classList.contains('valido') && privacidadInput.classList.contains('valido')){
+    if(nombreInput.classList.contains('valido') && apellidosInput.classList.contains('valido') && telefonoInput.classList.contains('valido') && emailInput.classList.contains('valido') && passwordInput.classList.contains('valido') && fnacInput.classList.contains('valido') && direccionInput.classList.contains('valido') && privacidadInput.classList.contains('valido')){
         alert("Formulario enviado correctamente");
         resetFormulario();
         formulario.submit();
-     }else{
-        alert("Por favor, corrija los errores en el formulario");
-     }
+    } else {
+        alert("Por favor, corrija los errores del formulario");
+    }
 })
+
