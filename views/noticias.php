@@ -1,3 +1,11 @@
+<?php
+    require_once '../controllers/Cl_Noticias.php';
+    $noticiaObj = new Noticia();
+    $noticias = $noticiaObj->leerNoticia($mysqli_connection);
+    //print_r($noticias);
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -61,25 +69,36 @@
                 </nav>
             </div>
             <div class="noticias_content">
-                <div class="noticia">
-                    <h2>LignoSat, el satélite japonés hecho de madera</h2>
-                    <h3>Francisco Pérez - El Mundo</h3>
-                    <h5>24/04/2016</h5>
-                    <div class="noticia_grueso">
-                        <div class="noticia_texto">
-                            <p>En diciembre de 2024, llegaron a la Estación Espacial Internacional cinco CubeSats a bordo de la nave espacial SpaceX Dragon. Entre estos pequeños satélites, destacaba LignoSat un dispositivo de madera desarrollado por la Agencia Japonesa de Exploración Aeroespacial (JAXA) con el que estudiar cómo mejorar la sostenibilidad en el espacio.</p>
-                            <p>Este satélite tiene como objetivo investigar el comportamiento de la madera en el entorno espacial, un paso que podría ofrecer alternativas más ecológicas frente a los tradicionales materiales metálicos utilizados en satélites.</p>
-                            <p>La investigación del uso de materiales orgánicos en el espacio surge como respuesta a los crecientes desafíos ambientales y la necesidad de explorar soluciones sostenibles para la exploración espacial. LignoSat busca evaluar las capacidades estructurales de la madera y cómo se comporta en condiciones extremas de radiación, temperatura y presión, características comunes en el espacio exterior.</p>
-                            <p>Aunque los materiales convencionales, como el aluminio y el titanio, son altamente eficaces para la construcción de satélites, su producción tiene un alto costo ambiental. El uso de madera podría abrir nuevas posibilidades en la reducción de la huella de carbono de la industria espacial, especialmente si los resultados de LignoSat confirman que este material es adecuado para soportar las condiciones extremas del espacio.</p>
-                            <p>El proyecto CubeSats de la ESA, caracterizado por la fabricación de nanosatélites cúbicos de entre 2 y 16 centímetros de lado, busca explorar la fabricación de satélites con costes mucho más reducidos, con objetivos muy específicos y limitados, y capaces de aprovechar el limitado espacio que queda libre en los cohetes de lanzamiento de otras misiones o en la Estación Espacial Internacional.</p>
-                            <p>En 2013, la ESA comenzó a ofrecer a los estudiantes universitarios la oportunidad de desarrollar su propia misión espacial en el vuelo inaugural del cohete Vega. Esta iniciativa, llamada «Fly your satelite!», no solo demostró ser un exitoso proyecto educativo, también fue el punto de partida para la creación de toda una serie de satélites miniaturizados. Desde entonces, no solo ha sido posible realizar innumerables experimentos y mediciones a un coste mucho menor, sino que se ha avanzado en el desarrollo de sistemas de satélites, organizados en enjambres y capaces de generar una «mente colmena» espacial.</p>
-                            <p>Como parte de un innovador proyecto, la JAXA ha optado por utilizar paneles de 4 a 5,5 mm de madera de magnolia honoki, conocida por su durabilidad y resistencia, la cual ha sido sometida a un proceso de ensamblaje inspirado en técnicas de carpintería japonesa.</p>
+                <?php if($noticias){
+                    foreach($noticias as $noticia){
+                        ?>
+                        <div class="noticia">
+                            <h2><?php echo $noticia['titulo']; ?></h2>
+                            <h3><?php echo $noticia['idUser']; ?></h3>
+                            <h5><?php echo (date('d/m/y', strtotime($noticia['fecha_creacion']))) ?></h5>
+                            <div class="noticia_grueso">
+                                <div class="noticia_texto">
+                                    <?php
+                                        $parrafos = preg_split('/\r\n|\r|\n/', $noticia['texto']);
+                                        foreach($parrafos as $p){
+                                            if(trim($p) !== ''){
+                                                echo "<p>" . trim($p) . "</p>";
+                                            }
+                                        }
+                                    ?>
+                                </div>
+                                <div class="noticia_img">
+                                    <img src="../assets/images/<?php echo $noticia['imagen'] ?>" alt="<?php echo $noticia['titulo'] ?>" width="353" height="486" title="<?php echo $noticia['titulo'] ?>">
+                                </div>
+                            </div>
                         </div>
-                        <div class="noticia_img">
-                            <img src="../assets/images/LignoSat.png" alt="riñón" width="353" height="486" title="Riñón">
-                        </div>
-                    </div>
-                </div>
+                        <?php
+                    }
+                    ?>
+                <?php
+                }
+                ?>
+                 
                 <div class="noticia">
                     <h2>Un nuevo instrumento español,portátil, de bajo coste, rápido y no invasivocontra las temidas piedras del riñón</h2>
                     <h3>Francisco Pérez - El Mundo</h3>

@@ -57,9 +57,6 @@ class Noticia{
     
 }
 
-$noticias = new Noticia();
-$noticiaL = $noticias->leerNoticia($mysqli_connection);
-print_r($noticiaL);
 
 
 
