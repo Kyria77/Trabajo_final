@@ -38,14 +38,26 @@ CREATE TABLE IF NOT EXISTS citas(
     CONSTRAINT fk_user_cita FOREIGN KEY (idUser) REFERENCES users_data(idUser)
 )ENGINE = INNODB;
 
--- Creación de la tabla de citas
+-- Creación de la tabla de noticias
 CREATE TABLE IF NOT EXISTS noticias(
     idNoticia INT NOT NULL AUTO_INCREMENT,
     titulo VARCHAR(200) NOT NULL UNIQUE,
-    imagen VARCHAR(150) NOT NULL,
+    idImagen INT NOT NULL,
     texto TEXT NOT NULL,
     fecha_creacion DATE NOT NULL,
     idUser INT NOT NULL,
     PRIMARY KEY(idNoticia),
-    CONSTRAINT fk_user_noticia FOREIGN KEY (idUser) REFERENCES users_data(idUser)
+    CONSTRAINT fk_user_noticia FOREIGN KEY (idUser) REFERENCES users_data(idUser),
+    CONSTRAINT fk_user_imagenes FOREIGN KEY (idImagen) REFERENCES imagenes(idImagen)
+)ENGINE = INNODB;
+
+-- Creación de la tabla de imágenes
+CREATE TABLE IF NOT EXISTS imagenes(
+    idImagen INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(150) NOT NULL,
+    alt VARCHAR(200) NOT NULL,
+    width VARCHAR(10) NOT NULL,
+    heigth VARCHAR(10) NOT NULL,
+    titulo VARCHAR(200),
+    PRIMARY KEY(idImagen)
 )ENGINE = INNODB;

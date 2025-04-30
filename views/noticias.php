@@ -73,8 +73,8 @@
                     foreach($noticias as $noticia){
                         ?>
                         <div class="noticia">
-                            <h2><?php echo $noticia['titulo']; ?></h2>
-                            <h3><?php echo $noticia['idUser']; ?></h3>
+                            <h2><?php echo $noticia['NotiTitulo']; ?></h2>
+                            <h3><?php echo $noticia['userNombre']; ?></h3>
                             <h5><?php echo (date('d/m/y', strtotime($noticia['fecha_creacion']))) ?></h5>
                             <div class="noticia_grueso">
                                 <div class="noticia_texto">
@@ -88,7 +88,7 @@
                                     ?>
                                 </div>
                                 <div class="noticia_img">
-                                    <img src="../assets/images/<?php echo $noticia['imagen'] ?>" alt="<?php echo $noticia['titulo'] ?>" width="353" height="486" title="<?php echo $noticia['titulo'] ?>">
+                                    <img src="../assets/images/<?php echo $noticia['imaNombre'] ?>" alt="<?php echo $noticia['alt'] ?>" width="<?php echo $noticia['width'] ?>" height="<?php echo $noticia['heigth'] ?>" title="<?php echo $noticia['imaTitulo'] ?>">
                                 </div>
                             </div>
                         </div>
@@ -98,48 +98,7 @@
                 <?php
                 }
                 ?>
-                 
-                <div class="noticia">
-                    <h2>Un nuevo instrumento español,portátil, de bajo coste, rápido y no invasivocontra las temidas piedras del riñón</h2>
-                    <h3>Francisco Pérez - El Mundo</h3>
-                    <h5>24/04/2016</h5>
-                    <div class="noticia_grueso">
-                        <div class="noticia_texto">
-                            <p>La medicina conoce como litiasis o nefrolitiasis a la formación de las popularmente conocidas como «piedras del riñón» o «cálculos renales». Estos cuerpos sólidos de formas y composiciones diversas aparecen en la pelvis renal debido a una combinación de varios factores como la genética, la dieta, la ingesta insuficiente de agua, la toma de ciertos medicamentos, las infecciones del aparato urinario o la obesidad, entre otros.</p>
-                            <p>Los cálculos renales pueden formarse por la cristalización de sustancias como las sales de calcio, de fósforo, de ácido úrico o de cistina. Si son muy pequeños, suelen eliminarse de manera natural en la micción, algo que suele ser doloroso debido a que los cálculos tienen habitualmente aristas que pueden dañar las paredes del conducto urinario.</p>
-                            <p>Pero si alcanzan un diámetro cercano a los 5 mm, obstruyen el uréter y causan un intenso dolor en la espalda o el abdomen. En casos extremos, esos cálculos pueden crecer tanto que ocupan gran parte de la pelvis renal y pueden causar problemas mucho más serios en el aparato urinario.</p>
-                            <p>Las consecuencias para la salud de los cálculos renales han impulsado a la medicina a desarrollar tratamientos para eliminarlos, desde medicamentos que favorecen la eliminación natural con reducción del dolor hasta cirugía para los casos más graves. </p>
-                            <p>El procedimiento más moderno es la litotricia, que es una técnica no invasiva que emplea haces de ondas de choque de ultrasonidos enfocados sobre los cálculos, para producir vibraciones en ellos que causan su fragmentación en fina arena expulsable por la uretra. La litotricia requiere, por el momento, de equipos de grandes dimensiones que deben ser instalados en una sala de un hospital o de una clínica. El procedimiento es eficaz, pero costoso y no aplicable en consultas externas, ya que el equipo es muy voluminoso. Además, hoy por hoy no está exento de efectos secundarios, ya que la amplitud de las ondas de choque empleadas es grande y a veces se producen daños sobre los tejidos sanos que se encuentran en los alrededores del cálculo.</p>
-                            <p>Lithovortex utiliza un nuevo tipo de onda acústica llamada haz de vórtice; que sería como un «remolino de sonido». Esta onda se enrosca y gira sobre sí misma cuando se focaliza sobre la piedra, lo que produce en ella esfuerzos de cizalla de una manera más eficiente que un haz convencional. Es como si dieran un «pellizco microscópico» en el interior de la piedra que hace que se fragmente en trozos muy finos. La operación completa se desarrolla en la mitad del tiempo que necesita una litotricia tradicional, que es de entre una y dos horas.</p>
-                            <p>El Servicio de Urología del Hospital La Fe y en concreto su Núcleo de investigación traslacional integrado Urológico de Valencia (NITIUV), ha desarrollado las pruebas iniciales, que han consistido, hasta la fecha, en una fragmentación de cálculos artificiales en un entorno simulado y, ya en colaboración con la Unidad de Litotricia del Hospital de La Fe de València se ha validado su funcionamiento con cálculos reales, pero fuera de un ser vivo.</p>
-                        </div>
-                        <div class="noticia_img">
-                            <img src="../assets/images/Rinnon.png" alt="riñón" width="353" height="486" title="Riñón">
-                        </div>
-                    </div>
-                </div>
-                <div class="noticia">
-                    <h2>Nuevos modelos del cambio climático:El deshielo del árticoharía más lluviosos a españa y portugal</h2>
-                    <h3>Francisco Pérez - El Mundo</h3>
-                    <h5>24/04/2016</h5>
-                    <div class="noticia_grueso">
-                        <div class="noticia_texto">
-                            <p>La medicina conoce como litiasis o nefrolitiasis a la formación de las popularmente conocidas como «piedras del riñón» o «cálculos renales». Estos cuerpos sólidos de formas y composiciones diversas aparecen en la pelvis renal debido a una combinación de varios factores como la genética, la dieta, la ingesta insuficiente de agua, la toma de ciertos medicamentos, las infecciones del aparato urinario o la obesidad, entre otros.</p>
-                            <p>Los cálculos renales pueden formarse por la cristalización de sustancias como las sales de calcio, de fósforo, de ácido úrico o de cistina. Si son muy pequeños, suelen eliminarse de manera natural en la micción, algo que suele ser doloroso debido a que los cálculos tienen habitualmente aristas que pueden dañar las paredes del conducto urinario.</p>
-                            <p>Pero si alcanzan un diámetro cercano a los 5 mm, obstruyen el uréter y causan un intenso dolor en la espalda o el abdomen. En casos extremos, esos cálculos pueden crecer tanto que ocupan gran parte de la pelvis renal y pueden causar problemas mucho más serios en el aparato urinario.</p>
-                            <p>Las consecuencias para la salud de los cálculos renales han impulsado a la medicina a desarrollar tratamientos para eliminarlos, desde medicamentos que favorecen la eliminación natural con reducción del dolor hasta cirugía para los casos más graves. </p>
-                            <p>El procedimiento más moderno es la litotricia, que es una técnica no invasiva que emplea haces de ondas de choque de ultrasonidos enfocados sobre los cálculos, para producir vibraciones en ellos que causan su fragmentación en fina arena expulsable por la uretra. La litotricia requiere, por el momento, de equipos de grandes dimensiones que deben ser instalados en una sala de un hospital o de una clínica. El procedimiento es eficaz, pero costoso y no aplicable en consultas externas, ya que el equipo es muy voluminoso. Además, hoy por hoy no está exento de efectos secundarios, ya que la amplitud de las ondas de choque empleadas es grande y a veces se producen daños sobre los tejidos sanos que se encuentran en los alrededores del cálculo.</p>
-                            <p>Lithovortex utiliza un nuevo tipo de onda acústica llamada haz de vórtice; que sería como un «remolino de sonido». Esta onda se enrosca y gira sobre sí misma cuando se focaliza sobre la piedra, lo que produce en ella esfuerzos de cizalla de una manera más eficiente que un haz convencional. Es como si dieran un «pellizco microscópico» en el interior de la piedra que hace que se fragmente en trozos muy finos. La operación completa se desarrolla en la mitad del tiempo que necesita una litotricia tradicional, que es de entre una y dos horas.</p>
-                            <p>El Servicio de Urología del Hospital La Fe y en concreto su Núcleo de investigación traslacional integrado Urológico de Valencia (NITIUV), ha desarrollado las pruebas iniciales, que han consistido, hasta la fecha, en una fragmentación de cálculos artificiales en un entorno simulado y, ya en colaboración con la Unidad de Litotricia del Hospital de La Fe de València se ha validado su funcionamiento con cálculos reales, pero fuera de un ser vivo.</p>
-                        </div>
-                        <div class="noticia_img">
-                            <img src="../assets/images/Rinnon.png" alt="riñón" width="353" height="486" title="Riñón">
-                        </div>
-                    </div>
-                </div>
-
             </div>
-            
         </main>
 
         <!--Comenzamos con el Footer, con los derechos, datos de la empresa, iconos redes sociales-->

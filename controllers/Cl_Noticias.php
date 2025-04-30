@@ -14,7 +14,7 @@ class Noticia{
         $select_stmt = null;
     
         try{
-            $select_stmt = $mysqli_connection->prepare('SELECT * FROM noticias');
+            $select_stmt = $mysqli_connection->prepare('SELECT n.titulo AS NotiTitulo, n.texto, n.fecha_creacion, i.nombre AS imaNombre, i.alt, i.width, i.heigth, i.titulo AS imaTitulo, ud.nombre AS userNombre, ud.apellidos FROM noticias n JOIN imagenes i ON i.idImagen = n.idImagen JOIN users_data ud ON ud.idUser = n.idUser;');
     
             if($select_stmt === false){
                 error_log("No se pudo preparar la sentencia" . $mysqli_connection->error);
