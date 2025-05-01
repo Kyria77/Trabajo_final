@@ -1,5 +1,5 @@
 <?php
-    require_once '../controllers/Cl_Noticias.php';
+    require_once '../controllers/clases/Cl_Noticias.php';
     $noticiaObj = new Noticia();
     $noticias = $noticiaObj->leerNoticia($mysqli_connection);
     //print_r($noticias);

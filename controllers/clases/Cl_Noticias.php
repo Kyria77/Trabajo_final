@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/../config/config.php';
-require_once 'db_conn.php';
+require_once __DIR__ . '/../../config/config.php';
+require_once __DIR__ . '/../db_conn.php';
 
 class Noticia{
     public function __construct(){

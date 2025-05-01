@@ -12,7 +12,7 @@ const privacidadInput = document.getElementById("privacidad");
 //Funciones para validar formulario
 function validarNombre(){
     const nombre = nombreInput.value;
-    const nombreVal = /^[a-zA-Z ]{1,30}$/;
+    const nombreVal = /^[a-zA-Z ]{2,30}$/;
     if(nombreVal.test(nombre)){
         nombreInput.classList.add('valido');
         nombreInput.classList.remove('invalido');
@@ -25,7 +25,7 @@ function validarNombre(){
 }
 function validarApellidos(){
     const apellidos = apellidosInput.value;
-    const apellidosVal = /^[a-zA-Z ]{1,60}$/;
+    const apellidosVal = /^[a-zA-Z ]{2,60}$/;
     if(apellidosVal.test(apellidos)){
         apellidosInput.classList.add('valido');
         apellidosInput.classList.remove('invalido');
