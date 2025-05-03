@@ -1,7 +1,7 @@
 <?php
 //Declaramos las expresiones regulares como constantes.
 define("NOMBRE_VAL", "/^[a-zA-Z ]{2,30}$/");
-define("APELLIDOS_VAL", "/^[a-zA-Z ]{2, 60}$/");
+define("APELLIDOS_VAL", "/^[a-zA-Z ]{2,60}$/");
 define("TELEFONO_VAL", "/^[0-9]{1,12}$/");
 define("PASSWORD_VAL", "/^(?=.*[A-Z])(?=.*\d)(?=.*[.,_\-])[a-zA-Z\d.,_\-]{4,10}$/");
 define("DIRECCION_VAL", "/^[a-zA-Z0-9 ,º]{1,150}$/");
@@ -53,9 +53,8 @@ function validacion_registro($nombre, $apellidos, $telefono, $email, $password, 
 function validarFnac($fecha){
     //Verifica que tenga el formato correcto
     $fecha_obj = DateTime::createFromFormat('Y-m-d', $fecha);
-    $errores = DateTimeImmutable::getLastErrors();
 
-    if($fecha_obj === false || $errores['warning_count'] > 0 || $errores['error_count'] > 0){
+    if(!$fecha_obj){
         return "Formato de fecha inválido.";
     }
 
@@ -70,15 +69,15 @@ function validarFnac($fecha){
 
 //Definimos la función para validar el login
 function validar_login($email, $password){
-    # Declarar un array asociativo
+    //Declarar un array asociativo
     $errores = [];
 
-    # Validación del correo electrónico
+    //Validación del correo electrónico
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
         $errores['email'] = "- El formato del correo electrónico no es válido";
     }
 
-    # Validación de la contraseña haciendo uso de la constante CONTRASENA_REGEX
+    //Validación de la contraseña haciendo uso de la constante CONTRASENA_REGEX
     if(!preg_match(PASSWORD_VAL, $password)){
         $errores['password'] = "- La contraseña deberá contener entre 4 y 10 caracteres e incluir de forma obligatoria una letra mayúscula, un número y un símbolo (.,_-)";
     }

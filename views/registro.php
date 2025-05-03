@@ -67,7 +67,7 @@
                 </div>
     
                 <div class="formulario-container">
-                    <form class="form_registro" id="form_registro" name="form_registro" method="post" action="#">
+                    <form class="form_registro" id="form_registro" name="form_registro" method="POST" action="../controllers/c_registro.php">
                         <div class="infoForm-container">
                             <div class="input-container">
                                 <label for="nombre">*Nombre:</label>
@@ -86,7 +86,7 @@
                             </div>
                             <div class="input-container">
                                 <label for="email">*Email:</label>
-                                <input type="email" id="email" name="email">
+                                <input type="text" id="email" name="email">
                                 <small class="error" id="emailError"></small>
                             </div>
                             <div class="input-container">

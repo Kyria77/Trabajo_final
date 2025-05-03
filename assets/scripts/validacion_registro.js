@@ -128,7 +128,6 @@ function validarFnac(){
 
 //Función para resetear los estados de los campos del formulario.
 function resetFormulario(){
-    formulario.reset();
     nombreInput.classList.remove('valido');
     apellidosInput.classList.remove('valido');
     telefonoInput.classList.remove('valido');
@@ -150,7 +149,6 @@ privacidadInput.addEventListener('input', validarPrivacidad);
 
 //Comprobamos de nuevo y gestionamos si se envía el formulario o no
 formulario.addEventListener('submit', function(event){
-    event.preventDefault();
     validarNombre();
     validarApellidos();
     validarTelefono();
@@ -164,6 +162,7 @@ formulario.addEventListener('submit', function(event){
         resetFormulario();
         formulario.submit();
     } else {
+        event.preventDefault();
         alert("Por favor, corrija los errores del formulario");
     }
 })
