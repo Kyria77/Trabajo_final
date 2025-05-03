@@ -138,6 +138,44 @@ class Usuario{
         }
     }
 
+    //Función para INSERTAR a un usuario y sus datos en la tabla users_data de la base de datos
+    public function insertarUsuario($nombre, $apellidos, $email, $telefono, $fnac, $direccion, $sexo, $mysqli_connection, &$exception_error){
+        $insert_stmt = null;
+
+        try{
+            $query = "INSERT INTO users_data(nombre, apellidos, email, telefono, fnac, direccion, sexo) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $insert_stmt = $mysqli_connection->prepare($query);
+
+            if(!$insert_stmt){
+                error_log("No se preparó la sentencia de inserción: " . $mysqli_connection->error);
+                $exception_error = true;
+                echo "No he preparado la sentencia";
+                return false;
+            }else{
+                $insert_stmt->bind_param("sssssss", $nombre, $apellidos, $email, $telefono, $fnac, $direccion, $sexo);
+
+                if(!$insert_stmt->execute()){
+                    error_log(("No se ejecutó la sentencia de inserción: ") . $insert_stmt->error);
+                    $exception_error = true;
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+        }catch(Exception $e){
+            error_log(("Error en la función insertarUsuario: " . $e->getMessage()));
+            header('Location: ../../views/errors/error500.html');
+        }finally{
+            if(isset($insert_stmt) && ($insert_stmt)){
+                $insert_stmt->close();
+            }
+
+            if(isset($mysqli_connection) && ($mysqli_connection)){
+                $mysqli_connection->close();
+            }
+        }
+    }
+
     //Función para buscar a un usuario y sus datos a través del email en la tabla users_login de la base de datos
     public function read_user_login($email, $mysqli_connection, &$exception_error){
         $select_stmt = null;

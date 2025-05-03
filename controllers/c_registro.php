@@ -24,6 +24,7 @@
         $password = htmlspecialchars($_POST['password']);
         $fnac = htmlspecialchars($_POST['fnac']);
         $direccion = htmlspecialchars($_POST['direccion']);
+        $sexo = $_POST['sexo'];
 
         //echo "He saneado el formulario";
 
@@ -44,6 +45,37 @@
 
             header('Location: ../views/registro.php');
             exit();
+        }
+
+        $pass = password_hash($password, PASSWORD_BCRYPT);
+
+        try{
+            $exception_error = false;
+            $usuarioObj = new Usuario();
+
+            //Si el resultado de comprobarUsuario es true, ese usuario ya existe
+            if($usuarioObj->comprobarUsuario($email, $mysqli_connection, $exception_error)){
+                $_SESSION['mensaje_error'] = "El usuario ya existe en la base de datos";
+                header("Location: ../views/registro.php");
+                exit();
+            }else{
+                if($usuarioObj->insertarUsuario($nombre, $apellidos, $email, $telefono, $fnac, $direccion, $sexo, $mysqli_connection, $exception_error)){
+                    $_SESSION['mensaje_exito'] = "El usuario se ha registrado correctamente";
+                    header("Location: ../views/registro.php");
+                    exit();
+                }else{
+                    $_SESSION['mensaje_error'] = "El usuario no se ha podido registrar";
+                    header('Location: ../views/errors/error500.html');
+                    exit();
+                }
+            }
+        }catch(Exception $e){
+            error_log("Error en registro: " . $e->getMessage());
+            header('Location ../views/errors/error500.html');
+        }finally{
+            if($$mysqli_connection){
+                $mysqli_connection->close();
+            }
         }
 
     }

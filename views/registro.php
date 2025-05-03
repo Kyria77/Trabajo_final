@@ -105,11 +105,11 @@
                                 <small class="error" id="direccionError"></small>
                             </div>
                             <div class="input-container">
-                                <label for="selectFormacion">Sexo:</label>
-                                <select id="selectFormacion" name="selectFormacion">
-                                    <option value="0" selected>No quiero responder</option>
-                                    <option value="1">Femenino</option>
-                                    <option value="2">Masculino</option>
+                                <label for="sexo">Sexo:</label>
+                                <select id="selectFormacion" name="sexo">
+                                    <option value="Prefiero no responder" selected>Prefiero no responder</option>
+                                    <option value="Femenino">Femenino</option>
+                                    <option value="Masculino">Masculino</option>
                                 </select>
                             </div>
                             <div class="input_container password_show">
