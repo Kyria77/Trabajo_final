@@ -93,8 +93,19 @@
     line-height: 1.5em;
 }
 
+.aviso_registro{
+    width: 0 auto;
+    font-family: 'Lato bold';
+    text-align: center;
+    margin: 1em;
+}
+.error_message{
+    color: brown;
+}
 
-
+.success_message{
+    color: green;
+}
 
 
 

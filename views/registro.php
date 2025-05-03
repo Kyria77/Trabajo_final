@@ -1,3 +1,10 @@
+<?php
+    # Comprobar si existe una sesión activa
+    if(session_status() == PHP_SESSION_NONE){
+        session_start();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -65,6 +72,27 @@
                     <p>El registro es totalmente gratuito y una vez registrado, podrás acceder a innumerables contenidos de diversas índoles que te darán muchas ideas para ayudarte con la programación didáctica de cada día.</p>
                     <p>Todos los campos que tengan un asterisco (*) son obligatorios.</p>
                 </div>
+
+                <div class="aviso_registro">
+                        <?php
+                            # Comprobar si hay mensajes de error
+                            if(isset($_SESSION["mensaje_error"])){
+                                echo "<span class='error_message'>" . $_SESSION['mensaje_error'] . "</span>";
+
+                                # Eliminar el mensaje de error
+                                unset($_SESSION["mensaje_error"]);
+                            }
+                            
+
+                            # Comprobar si hay mensajes de exito
+                            if(isset($_SESSION["mensaje_exito"])){
+                                echo "<span class='success_message'>" . $_SESSION['mensaje_exito'] . "</span>";
+
+                                # Eliminar el mensaje de error
+                                unset($_SESSION["mensaje_exito"]);
+                            }
+                        ?>
+                    </div>
     
                 <div class="formulario-container">
                     <form class="form_registro" id="form_registro" name="form_registro" method="POST" action="../controllers/c_registro.php">
