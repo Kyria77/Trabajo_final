@@ -7,7 +7,7 @@
     //Comprobamos si existe una sesión activa, y si no hay, la creamos.
     if(session_status() == PHP_SESSION_NONE){
         session_start();
-        var_dump($_POST);
+        //var_dump($_POST);
         //exit;
     }
 
@@ -60,20 +60,35 @@
                 exit();
             }else{
                 if($usuarioObj->insertarUsuario($nombre, $apellidos, $email, $telefono, $fnac, $direccion, $sexo, $mysqli_connection, $exception_error)){
-                    $_SESSION['mensaje_exito'] = "El usuario se ha registrado correctamente";
-                    header("Location: ../views/registro.php");
-                    exit();
+                    $_SESSION['mensaje_exito'] = "El usuario se ha registrado en data perfectamente";
+                    //header("Location: ../views/registro.php");
+                    //exit();
                 }else{
                     $_SESSION['mensaje_error'] = "El usuario no se ha podido registrar";
-                    header('Location: ../views/errors/error500.html');
-                    exit();
+                    //header('Location: ../views/errors/error500.html');
+                    //exit();
+                }
+
+                $datosUsuario = $usuarioObj->leerUsuarioByEmail($email, $mysqli_connection, $exception_error);
+                if($datosUsuario){
+                    $id = $datosUsuario['idUser'];
+                    $rol = "user";
+                    if($usuarioObj->insert_user_login($id, $email, $pass, $rol, $mysqli_connection, $exception_error)){
+                        $_SESSION['mensaje_exito'] = "El usuario se ha registrado correctamente";
+                        header("Location: ../views/login.html");
+                        exit();
+                    }else{
+                        $_SESSION['mensaje_error'] = "El usuario no se ha podido registrar";
+                        header('Location: ../views/errors/error500.html');
+                        exit();
+                    }
                 }
             }
         }catch(Exception $e){
             error_log("Error en registro: " . $e->getMessage());
             header('Location ../views/errors/error500.html');
         }finally{
-            if($$mysqli_connection){
+            if($mysqli_connection){
                 $mysqli_connection->close();
             }
         }

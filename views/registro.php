@@ -32,7 +32,7 @@
                         <li><a class="out" href="../index.html">INICIO</a></li>
                         <li><a class="out" href="./steam_dia.html">STEAM AL DÍA</a></li>
                         <li><a class="inn" href="#">REGISTRARSE</a></li>
-                        <li><a class="out" href="./login.html">LOGIN</a></li>
+                        <li><a class="out" href="./login.php">LOGIN</a></li>
                         <li>
                             <a href="https://www.instagram.es" title="Enlace a Instagram">
                                 <img src="../assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
@@ -62,7 +62,7 @@
                 <nav class="main_nav_content">
                     <ul class="main_navLinks">
                         <li><a class="inn_registro" href="#">Registrarse</a></li>
-                        <li><a class="out_registro" href="./login.html">Iniciar sesión</a></li>
+                        <li><a class="out_registro" href="./login.php">Iniciar sesión</a></li>
                     </ul>
                 </nav>
             </div>
