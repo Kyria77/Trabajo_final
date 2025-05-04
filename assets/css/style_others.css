@@ -6,7 +6,7 @@
     height: auto;
 }
 
-.cartel_steamAlDia, .cartel_registro, .cartel_login{
+.cartel_steamAlDia, .cartel_registro, .cartel_login, .cartel_citas{
     width: 20%;
     background-color: #ffed00;
     padding: 1.3em;
@@ -143,12 +143,12 @@
     background-color: transparent;
     color: black;
 }
-.button-container, .button-container_login{
+.button-container, .button-container_login, .button-container_citas{
     display: flex;
     flex-direction: column;
     margin-top: 20px;
 }
-.button-container input, .button-container_login input{
+.button-container input, .button-container_login input, .button-container_citas input{
     padding: 10px 20px;
     border: none;
     border-radius: 10px;
@@ -186,5 +186,21 @@
 }
 .button-container_login input:hover{
     background-color: rgb(200, 148, 248);
+    transform: translateY(-5px);
+}
+
+
+
+/*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* MAIN CITAS *-**-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
+.cartel_citas{
+    background-color: rgb(248, 193, 148);
+}
+.inn_citas{
+    border-bottom: 3px solid rgb(248, 193, 148);
+}
+.button-container_citas input:hover{
+    background-color:  rgb(248, 193, 148);
     transform: translateY(-5px);
 }

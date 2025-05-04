@@ -30,9 +30,9 @@
             <div class="header_content">
                 <nav class="nav_content">
                     <ul class="navLinks">
-                        <li><a class="out" href="../index.html">INICIO</a></li>
-                        <li><a class="out" href="./steam_dia.html">STEAM AL DÍA</a></li>
-                        <li><a class="out" href="./registro.php">REGISTRARSE</a></li>
+                        <li><a class="out" href="../index.php">INICIO</a></li>
+                        <li><a class="out" href="steam_dia.php">STEAM AL DÍA</a></li>
+                        <li><a class="out" href="registro.php">REGISTRARSE</a></li>
                         <li><a class="inn" href="#">LOGIN</a></li>
                         <li>
                             <a href="https://www.instagram.es" title="Enlace a Instagram">

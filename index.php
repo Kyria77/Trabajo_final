@@ -1,3 +1,13 @@
+<?php
+    require_once __DIR__ . '/config/config.php';
+
+    # Comprobar si existe una sesión activa y en caso de que no así la crearemos
+    if(session_status() == PHP_SESSION_NONE){
+        session_start();
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -9,8 +19,8 @@
         <meta name="keywords" content="docente, acompañamiento, alumno, ciencias, biologia, tecnologia, fisica, ideas clases, competenciales, actividad">
         <meta name="revisit-after" content="2 days">
 
-        <link rel="stylesheet" href="./assets/css/style.css">
-        <link rel="icon" type="image/png" href="./favicon.png">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="icon" type="image/png" href="favicon.png">
     </head>
     <body>
         <!--Comenzamos con Header, nuetra cabecera con el logo, la barra de navegación e introducción-->
@@ -20,22 +30,49 @@
             </div>
             <div class="header_content">
                 <nav class="nav_content">
-                    <ul class="navLinks">
-                        <li><a class="inn" href="#">INICIO</a></li>
-                        <li><a class="out" href="./views/steam_dia.html">STEAM AL DÍA</a></li>
-                        <li><a class="out" href="./views/registro.php">REGISTRARSE</a></li>
-                        <li><a class="out" href="./views/login.html">LOGIN</a></li>
-                        <li>
-                            <a href="https://www.instagram.es" title="Enlace a Instagram">
-                                <img src="./assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.youtube.com" title="Enlace a YouTube">
-                                <img src="./assets/images/youtube.png" alt="icono de YouTube" width="32" height="32" title="icono YouTube">
-                            </a>
-                        </li>
-                    </ul>
+                <?php
+                    if(isset($_SESSION['user_data_all'])){
+                    ?>
+                        <ul class="navLinks">
+                            <li><a class="inn" href="#">INICIO</a></li>
+                            <li><a class="out" href="views/steam_dia.php">STEAM AL DÍA</a></li>
+                            <li><a class="out" href="views/users/inspirate.php">INSPÍRATE</a></li>
+                            <li><a class="out" href="views/users/agenda.php">AGENDA</a></li>
+                            <li><a class="out" href="views/users/perfil.php">PERFIL</a></li>
+                            <li><a class="out" href="views/users/cerrar_sesion.php">CERRAR SESIÓN</a></li>
+                            <li>
+                                <a href="https://www.instagram.es" title="Enlace a Instagram">
+                                    <img src="assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com" title="Enlace a YouTube">
+                                    <img src="assets/images/youtube.png" alt="icono de YouTube" width="32" height="32" title="icono YouTube">
+                                </a>
+                            </li>
+                        </ul>
+                    <?php
+                    }else{
+                    ?>
+                        <ul class="navLinks">
+                            <li><a class="inn" href="#">INICIO</a></li>
+                            <li><a class="out" href="views/steam_dia.php">STEAM AL DÍA</a></li>
+                            <li><a class="out" href="views/registro.php">REGISTRARSE</a></li>
+                            <li><a class="out" href="views/login.php">LOGIN</a></li>
+                            <li>
+                                <a href="https://www.instagram.es" title="Enlace a Instagram">
+                                    <img src="assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com" title="Enlace a YouTube">
+                                    <img src="assets/images/youtube.png" alt="icono de YouTube" width="32" height="32" title="icono YouTube">
+                                </a>
+                            </li>
+                        </ul>
+                    <?php
+                    }
+                    ?>
                 </nav>
                 <div class="presentation_content">
                     <h1>Nuestra misión</h1>
@@ -61,7 +98,7 @@
                         <h3>Biblioteca</h3>
                         <p>Si no funciona ¡evoluciona!</p>
                         <div class="main_btn">
-                            <a href="./views/steam_dia.html">VER MÁS</a>
+                            <a href="views/steam_dia.php">VER MÁS</a>
                         </div>
                     </div>
                 </div>
@@ -75,7 +112,7 @@
                         <p>La revolución industrial: máquinas de vapor y velocidad</p>
                         <h3>Haz comunidad</h3>
                         <div class="main_btn">
-                            <a href="./views/noticias.html">VER MÁS</a>
+                            <a href="views/noticias.php">VER MÁS</a>
                         </div>
                     </div>
                 </div>
@@ -89,7 +126,7 @@
                         <p>Aniversario del nacimiento de Marie Anne Victoire Gillain Boivin</p>
                         <p>Día Internacional de la Tierra</p>
                         <div class="main_btn">
-                            <a href="./views/noticias.html">VER MÁS</a>
+                            <a href="views/noticias.php">VER MÁS</a>
                         </div>
                     </div>
                 </div>
@@ -105,7 +142,7 @@
                         Cuando nos descubras más, seguro que <span class="bold">tú también entrarás a formar parte del equipo</span>.</p>
                 </div>
                 <div class="img_presentation">
-                    <img src="./assets/images/presentation_img.png" alt="mujer con una niña realizando un experimento" width="436" height="555">
+                    <img src="assets/images/presentation_img.png" alt="mujer con una niña realizando un experimento" width="436" height="555">
                 </div>
             </div>
             
@@ -117,12 +154,12 @@
                 <ul class="redes">
                     <li>
                         <a href="https://www.instagram.es" title="Enlace a Instagram">
-                            <img src="./assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
+                            <img src="assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
                         </a>
                     </li>
                     <li>
                         <a href="https://www.youtube.com" title="Enlace a YouTube">
-                            <img src="./assets/images/youtube.png" alt="icono de YouTube" width="32" height="32" title="icono YouTube">
+                            <img src="assets/images/youtube.png" alt="icono de YouTube" width="32" height="32" title="icono YouTube">
                         </a>
                     </li>
                 </ul>
@@ -136,7 +173,7 @@
                     <p>Aviso Legal | Política de Cookies | Política de Privacidad</p>
             </div>
             <div class="footer_logo">
-                <img src="./assets/images/steam_footer.png" alt="logo steam&Co" width="166" height="81" title="Logo">
+                <img src="assets/images/steam_footer.png" alt="logo steam&Co" width="166" height="81" title="Logo">
             </div>
         </footer>
     </body>

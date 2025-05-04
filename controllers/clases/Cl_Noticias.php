@@ -18,15 +18,13 @@ class Noticia{
     
             if($select_stmt === false){
                 error_log("No se pudo preparar la sentencia" . $mysqli_connection->error);
-                //$exception_error = true;
-                echo "No se pudo preparar la sentencia";
+                //echo "No se pudo preparar la sentencia";
                 return false;
             }
     
             if(!$select_stmt->execute()){
                 error_log(("No se pudo ejecutar la sentencia " . $mysqli_connection->error));
-                //$exception_error = true;
-                echo "No se pudo ejecutar la sentencia";
+                //echo "No se pudo ejecutar la sentencia";
                 return false;
             }
     
@@ -38,7 +36,7 @@ class Noticia{
                     $noticias[] = $fila;
                     echo "<br>";
                 }
-                echo "Estoy leyendo las noticias";
+                //echo "Estoy leyendo las noticias";
                 return $noticias;
             }else{
                 echo "No hay noticias disponibles";
@@ -46,7 +44,6 @@ class Noticia{
             }
         }catch(Exception $e){
             error_log("Error al ejecutar la función: " . $e->getMessage());
-            //$exception_error = true;
             return false;
         } finally{
             if($select_stmt !== null){

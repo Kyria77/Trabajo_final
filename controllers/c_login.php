@@ -10,8 +10,8 @@
         //exit;
     }
 
-    var_dump($_POST);
-    echo "He iniciado sesión";
+    //var_dump($_POST);
+    //echo "He iniciado sesión";
 
     //Comprobamos que la información nos llega por POST y por el formulario 'registro'.
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['form_origen']) && $_POST['form_origen'] === 'login'){
@@ -20,12 +20,12 @@
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
         $password = htmlspecialchars($_POST['password']);
 
-        echo "He saneado el formulario";
+        //echo "He saneado el formulario";
 
         //Ejecutamos la función de validar el formulario de registro que está en el archivo valodationData.php
         $errores_validacion = validar_login($email, $password);
 
-        echo "HE validado el formulario";
+        //echo "HE validado el formulario";
 
         //Si hay errores de validación, los metemos en una variable de sesión
         if(!empty($errores_validacion)){
@@ -46,7 +46,6 @@
             $exception_error = false;
             $usuarioObj = new Usuario();
             $user = $usuarioObj->read_all_user_info($email, $mysqli_connection, $exception_error);
-            var_dump($user);
 
             if($exception_error){
                 $_SESSION['mensaje_error'] = "Algo no fue bien. Por favor, inténtelo un poco más tarde.";
@@ -58,6 +57,7 @@
                 //Si ha encontyrado usuario, comprobamos su contraseña
                 if(password_verify($password, $user['pass'])){
                     $_SESSION['user_data_all'] = $user;
+                    $_SESSION['mensaje_exito'] = "Inicio de sesión correcto. Welcome, " . $user['nombre'] . "!";
                     header('Location: ../views/users/perfil.php');
                     exit();
                 }else{

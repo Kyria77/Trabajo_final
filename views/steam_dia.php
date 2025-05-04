@@ -1,3 +1,13 @@
+<?php
+    require_once __DIR__ . '/../config/config.php';
+
+    //Comprobar si existe una sesión activa y en caso de que no así la crearemos
+    if(session_status() == PHP_SESSION_NONE){
+        session_start();
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -21,22 +31,49 @@
             </div>
             <div class="header_content">
                 <nav class="nav_content">
-                    <ul class="navLinks">
-                        <li><a class="out" href="../index.html">INICIO</a></li>
-                        <li><a class="inn" href="#">STEAM AL DÍA</a></li>
-                        <li><a class="out" href="./registro.php">REGISTRARSE</a></li>
-                        <li><a class="out" href="./login.php">LOGIN</a></li>
-                        <li>
-                            <a href="https://www.instagram.es" title="Enlace a Instagram">
-                                <img src="../assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.youtube.com" title="Enlace a YouTube">
-                                <img src="../assets/images/youtube.png" alt="icono de YouTube" width="32" height="32" title="icono YouTube">
-                            </a>
-                        </li>
-                    </ul>
+                <?php
+                    if(isset($_SESSION['user_data_all'])){
+                    ?>
+                        <ul class="navLinks">
+                            <li><a class="out" href="../index.php">INICIO</a></li>
+                            <li><a class="inn" href="#">STEAM AL DÍA</a></li>
+                            <li><a class="out" href="users/inspirate.php">INSPÍRATE</a></li>
+                            <li><a class="out" href="users/agenda.php">AGENDA</a></li>
+                            <li><a class="out" href="users/perfil.php">PERFIL</a></li>
+                            <li><a class="out" href="users/cerrar_sesion.php">CERRAR SESIÓN</a></li>
+                            <li>
+                                <a href="https://www.instagram.es" title="Enlace a Instagram">
+                                    <img src="../assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com" title="Enlace a YouTube">
+                                    <img src="../assets/images/youtube.png" alt="icono de YouTube" width="32" height="32" title="icono YouTube">
+                                </a>
+                            </li>
+                        </ul>
+                    <?php
+                    }else{
+                    ?>
+                        <ul class="navLinks">
+                            <li><a class="out" href="../index.php">INICIO</a></li>
+                            <li><a class="out" href="#">STEAM AL DÍA</a></li>
+                            <li><a class="out" href="registro.php">REGISTRARSE</a></li>
+                            <li><a class="out" href="login.php">LOGIN</a></li>
+                            <li>
+                                <a href="https://www.instagram.es" title="Enlace a Instagram">
+                                    <img src="../assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com" title="Enlace a YouTube">
+                                    <img src="../assets/images/youtube.png" alt="icono de YouTube" width="32" height="32" title="icono YouTube">
+                                </a>
+                            </li>
+                        </ul>
+                    <?php
+                    }
+                    ?>
                 </nav>
                 <div class="presentation_content">
                     <h1>Únete</h1>
@@ -57,7 +94,7 @@
                         <h2>Actualidad científica</h2>
                         <h3>Noticias</h3>
                         <div class="main_btn">
-                            <a href="./noticias.php">VER MÁS</a>
+                            <a href="noticias.php">VER MÁS</a>
                         </div>
                     </div>
                 </div>
@@ -66,7 +103,7 @@
                         <h2>Perfiles</h2>
                         <h3>Mº Carmen Martínez Rodríguez</h3>
                         <div class="main_btn">
-                            <a href="./perfiles.html">VER MÁS</a>
+                            <a href="perfiles.php">VER MÁS</a>
                         </div>
                     </div>
                 </div>
@@ -75,7 +112,7 @@
                         <h2>Biblioteca</h2>
                         <h3>Si no funciona, evoluciona</h3>
                         <div class="main_btn">
-                            <a href="./biblioteca.html">VER MÁS</a>
+                            <a href="biblioteca.php">VER MÁS</a>
                         </div>
                     </div>
                 </div>
