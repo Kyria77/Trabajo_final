@@ -75,7 +75,7 @@
                     $rol = "user";
                     if($usuarioObj->insert_user_login($id, $email, $pass, $rol, $mysqli_connection, $exception_error)){
                         $_SESSION['mensaje_exito'] = "El usuario se ha registrado correctamente";
-                        header("Location: ../views/login.html");
+                        header("Location: ../views/login.php");
                         exit();
                     }else{
                         $_SESSION['mensaje_error'] = "El usuario no se ha podido registrar";

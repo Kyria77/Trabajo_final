@@ -1,3 +1,11 @@
+<?php
+    # Comprobar si existe una sesión activa
+    if(session_status() == PHP_SESSION_NONE){
+        session_start();
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -63,9 +71,31 @@
                 <div class="registro_presentacion">
                     <p>El nombre de usuario será el email con el que te registraste.</p>
                 </div>
+
+                <div class="aviso_registro">
+                    <?php
+                        //Comprobar si hay mensajes de error
+                        if(isset($_SESSION["mensaje_error"])){
+                            echo "<span class='error_message'>" . $_SESSION['mensaje_error'] . "</span>";
+
+                            //Eliminar el mensaje de error
+                            unset($_SESSION["mensaje_error"]);
+                        }
+                            
+
+                        //Comprobar si hay mensajes de exito
+                        if(isset($_SESSION["mensaje_exito"])){
+                            echo "<span class='success_message'>" . $_SESSION['mensaje_exito'] . "</span>";
+
+                            //Eliminar el mensaje de error
+                            unset($_SESSION["mensaje_exito"]);
+                        }
+                    ?>
+                </div>
     
                 <div class="formulario-container">
-                    <form class="form_login" id="form_login" name="form_login" method="post" action="#">
+                    <form class="form_login" id="form_login" name="form_login" method="post" action="../controllers/c_login.php">
+                        <input type="hidden" name="form_origen" value="login">
                         <div class="infoForm-container">
                             <div class="input-container">
                                 <label for="email">Usuario:</label>

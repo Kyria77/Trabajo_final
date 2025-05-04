@@ -33,7 +33,6 @@ function validarPassword(){
 
 //Función para resetear los estados de los campos del formulario.
 function resetFormulario(){
-    formulario.reset();
     emailInput.classList.remove('valido');
     passwordInput.classList.remove('valido');
 }
@@ -47,7 +46,6 @@ formulario.addEventListener('submit', function(event){
     validarEmail();
     validarPassword();
     if(emailInput.classList.contains('valido') && passwordInput.classList.contains('valido')){
-        alert("Formulario enviado correctamente");
         resetFormulario();
         formulario.submit();
     } else {

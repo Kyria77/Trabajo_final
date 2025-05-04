@@ -257,6 +257,50 @@ class Usuario{
             }
         }*/
     }
+
+
+    //Función para leer todos los datos de un usuario incluidas las dos tablas users_data y users_login
+    public function read_all_user_info($email, $mysqli_connection, &$exception_error){
+        $select_stmt = null;
+
+        try{
+            //Sentencia SQL
+            $select_stmt = $mysqli_connection->prepare('SELECT * FROM users_data ud JOIN users_login ul ON ud.idUser = ul.idUser WHERE ud.email = ?;');
+
+            if($select_stmt === false){
+                error_log("No se preparó la sentencia: " . $mysqli_connection->error);
+                $exception_error = true;
+                return false;
+            }
+
+            $select_stmt->bind_param("s", $email);
+
+            //Comprobamos si podemos ejecutar la sentencia
+            if(!$select_stmt->execute()){
+                error_log(("No se ejecutó la sentencia: ") . $select_stmt->error);
+                $exception_error = true;
+                return false;
+            }
+
+            //Guardamos el resultado de la sentencia
+            $result = $select_stmt->get_result();
+            if($result->num_rows > 0){
+                $user = $result->fetch_assoc();
+                return $user;
+            }else{
+                return false;
+            }
+
+        }catch(Exception $e){
+            error_log(("Error en la función comprobarUsuario: " . $e->getMessage()));
+            $exception_error = true;
+            return false;
+        }finally{
+            if($select_stmt !== null){
+                $select_stmt->close();
+            }
+        }
+    }
     
 }
 

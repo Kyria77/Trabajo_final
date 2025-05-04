@@ -74,25 +74,25 @@
                 </div>
 
                 <div class="aviso_registro">
-                        <?php
-                            # Comprobar si hay mensajes de error
-                            if(isset($_SESSION["mensaje_error"])){
-                                echo "<span class='error_message'>" . $_SESSION['mensaje_error'] . "</span>";
+                    <?php
+                        //Comprobar si hay mensajes de error
+                        if(isset($_SESSION["mensaje_error"])){
+                            echo "<span class='error_message'>" . $_SESSION['mensaje_error'] . "</span>";
 
-                                # Eliminar el mensaje de error
-                                unset($_SESSION["mensaje_error"]);
-                            }
+                            //Eliminar el mensaje de error
+                            unset($_SESSION["mensaje_error"]);
+                        }
                             
 
-                            # Comprobar si hay mensajes de exito
-                            if(isset($_SESSION["mensaje_exito"])){
-                                echo "<span class='success_message'>" . $_SESSION['mensaje_exito'] . "</span>";
+                        //Comprobar si hay mensajes de exito
+                        if(isset($_SESSION["mensaje_exito"])){
+                            echo "<span class='success_message'>" . $_SESSION['mensaje_exito'] . "</span>";
 
-                                # Eliminar el mensaje de error
-                                unset($_SESSION["mensaje_exito"]);
-                            }
-                        ?>
-                    </div>
+                            //Eliminar el mensaje de error
+                            unset($_SESSION["mensaje_exito"]);
+                        }
+                    ?>
+                </div>
     
                 <div class="formulario-container">
                     <form class="form_registro" id="form_registro" name="form_registro" method="POST" action="../controllers/c_registro.php">
