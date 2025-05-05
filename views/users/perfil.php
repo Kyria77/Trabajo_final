@@ -78,7 +78,7 @@
                     <ul class="main_navLinks">
                         <li><a class="inn_login" href="#">Perfil</a></li>
                         <li><a class="out_login" href="citas.php">Citas</a></li>
-                        <li><a class="out_login" href="cerrar_sesion.php">Cerrar sesión</a></li>
+                        <li><a class="out_login" href="../../controllers/cerrar_sesion.php">Cerrar sesión</a></li>
                     </ul>
                 </nav>
             </div>
@@ -105,7 +105,7 @@
             </div>
 
             <div class="formulario-container">
-                <form class="form_actualizar" id="form_actualizar" name="form_actualizar" method="POST" action="../../controllers/c_perfil.php">
+                <form class="form_actualizar" id="form_registro" name="form_actualizar" method="POST" action="../../controllers/c_perfil.php">
                     <div class="infoForm-container">
                         <div class="input-container">
                             <label for="nombre">Nombre:</label>

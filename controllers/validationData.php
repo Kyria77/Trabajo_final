@@ -5,6 +5,7 @@ define("APELLIDOS_VAL", "/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]{2,60}$/");
 define("TELEFONO_VAL", "/^[0-9]{1,12}$/");
 define("PASSWORD_VAL", "/^(?=.*[A-Z])(?=.*\d)(?=.*[.,_\-])[a-zA-Z\d.,_\-]{4,10}$/");
 define("DIRECCION_VAL", "/^[a-zA-Z0-9a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s,º]{1,150}$/");
+define("ASUNTO_VAL", "/^[a-zA-Z0-9a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s,º]{1,250}$/");
 
 //Definimos la función para validar nuestro formulario de registro
 function validacion_registro($nombre, $apellidos, $telefono, $email, $password, $fnac, $direccion){
@@ -85,7 +86,7 @@ function validar_login($email, $password){
     return $errores;
 }
 
-//Definimos la función para validar nuestro formulario de registro
+//Definimos la función para validar nuestro formulario de actualización
 function validacion_actualizacion($nombre, $apellidos, $telefono, $password, $fnac, $direccion){
     $errores = [];
 
@@ -121,6 +122,42 @@ function validacion_actualizacion($nombre, $apellidos, $telefono, $password, $fn
     }
 
     return $errores;
+}
+
+
+
+
+//Definimos función para validar nuestro registro de citas
+function validacion_citas($asunto, $fcita){
+    $errores = [];
+
+    //Validamos el nombre
+    if(!preg_match(ASUNTO_VAL, $asunto)){
+        $errores['asunto'] = "- El asunto deberá contener 250 caracteres como máximo.";
+    }
+    //Validamos fecha nacimiento
+    $validaciionFcita = validarFcita($fcita);
+    if(!$validaciionFcita){
+        $errores['fcita'] = $validaciionFcita;
+    }
+
+    return $errores;
+}
+//Definimos función para validar la fecha de nacimiento
+function validarFcita($fecha){
+    //Verifica que tenga el formato correcto
+    $fecha_obj = DateTime::createFromFormat('Y-m-d', $fecha);
+
+    if(!$fecha_obj){
+        return "Formato de fecha inválido.";
+    }
+
+    //Compara con la fecha actual
+    $hoy = new DateTime();
+    if($fecha_obj < $hoy){
+        return "La fecha no puede ser pasada.";
+    }
+    return true;
 }
 
 

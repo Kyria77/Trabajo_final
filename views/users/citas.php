@@ -47,8 +47,8 @@
             <div class="header_content">
                 <nav class="nav_content">
                     <ul class="navLinks">
-                        <li><a class="out" href="../../index.html">INICIO</a></li>
-                        <li><a class="out" href="../steam_dia.html">STEAM AL DÍA</a></li>
+                        <li><a class="out" href="../../index.php">INICIO</a></li>
+                        <li><a class="out" href="../steam_dia.php">STEAM AL DÍA</a></li>
                         <li><a class="out" href="inspirate.php">INSPÍRATE</a></li>
                         <li><a class="out" href="agenda.php">AGENDA</a></li>
                         <li><a class="inn" href="#">PERFIL</a></li>
@@ -83,93 +83,63 @@
                     <ul class="main_navLinks">
                         <li><a class="out_login" href="perfil.php">Perfil</a></li>
                         <li><a class="inn_citas" href="citas.php">Citas</a></li>
-                        <li><a class="out_login" href="cerrar_sesion.php">Cerrar sesión</a></li>
+                        <li><a class="out_login" href="../../controllers/cerrar_sesion.php">Cerrar sesión</a></li>
                     </ul>
                 </nav>
             </div>
 
-            <div class="aviso_registro">
-                    <?php
-                        //Comprobar si hay mensajes de error
-                        if(isset($_SESSION["mensaje_error"])){
-                            echo "<span class='error_message'>" . $_SESSION['mensaje_error'] . "</span>";
-
-                            //Eliminar el mensaje de error
-                            unset($_SESSION["mensaje_error"]);
-                        }
-                            
-
-                        //Comprobar si hay mensajes de exito
-                        if(isset($_SESSION["mensaje_exito"])){
-                            echo "<span class='success_message'>" . $_SESSION['mensaje_exito'] . "</span>";
-
-                            //Eliminar el mensaje de error
-                            unset($_SESSION["mensaje_exito"]);
-                        }
-                    ?>
+            <div class="main_registro_content">
+                <div class="registro_presentacion">
+                    <p>En esta sección podrás solicitar nuevas citas. También podrás modificar o cancelar una cita ya solicitada.</p>
                 </div>
 
-                <div class="formulario-container">
-                    <form class="form_registro" id="form_registro" name="form_actualizar" method="POST" action="../controllers/c_registro.php">
+                <div class="aviso_registro">
+                        <?php
+                            //Comprobar si hay mensajes de error
+                            if(isset($_SESSION["mensaje_error"])){
+                                echo "<span class='error_message'>" . $_SESSION['mensaje_error'] . "</span>";
+
+                                //Eliminar el mensaje de error
+                                unset($_SESSION["mensaje_error"]);
+                            }
+                                
+
+                            //Comprobar si hay mensajes de exito
+                            if(isset($_SESSION["mensaje_exito"])){
+                                echo "<span class='success_message'>" . $_SESSION['mensaje_exito'] . "</span>";
+
+                                //Eliminar el mensaje de error
+                                unset($_SESSION["mensaje_exito"]);
+                            }
+                        ?>
+                    </div>
+
+                    <div class="formulario-container">
+                    <h2>Solicitar nueva cita</h2>    
+                    <form class="form_citas" id="form_citas" name="form_citas" method="POST" action="../controllers/c_citas.php">
                         <div class="infoForm-container">
                             <div class="input-container">
-                                <label for="nombre">Nombre:</label>
-                                <input type="text" id="nombre" name="nombre">
+                                <label for="nombre_apellidos">Nombre y apellidos:</label>
+                                <input type="text" id="nombre_apellidos" name="nombre_apellidos" value="<?php echo $user_data['nombre'] . " " . $user_data['apellidos'] ?>" disabled>
                                 <small class="error" id="nombreError"></small>
                             </div>
                             <div class="input-container">
-                                <label for="apellidos">Apellidos:</label>
-                                <input type="text" id="apellidos" name="apellidos">
-                                <small class="error" id="apellidosError"></small>
+                                <label for="fcita">Fecha:</label>
+                                <input type="date" id="fcita" name="fcita">
+                                <small class="error" id="fcitaError"></small>
                             </div>
                             <div class="input-container">
-                                <label for="telefono">Teléfono:</label>
-                                <input type="tel" id="telefono" name="telefono">
-                                <small class="error" id="telefonoError"></small>
-                            </div>
-                            <div class="input-container">
-                                <label for="email">Email:</label>
-                                <input type="text" id="email" name="email">
-                                <small class="error" id="emailError"></small>
-                            </div>
-                            <div class="input-container">
-                                <label for="password">Contraseña:</label>
-                                <input type="password" id="password" name="password">
-                                <small class="error" id="passwordError"></small>
-                            </div>
-                            <div class="input-container">
-                                <label for="fnac">Fecha de nacimiento:</label>
-                                <input type="date" id="fnac" name="fnac">
-                                <small class="error" id="fnacError"></small>
-                            </div>
-                            <div class="input-container">
-                                <label for="direccion">Dirección:</label>
-                                <input type="text" id="direccion" name="direccion">
-                                <small class="error" id="direccionError"></small>
-                            </div>
-                            <div class="input-container">
-                                <label for="sexo">Sexo:</label>
-                                <select id="selectFormacion" name="sexo">
-                                    <option value="Prefiero no responder" selected>Prefiero no responder</option>
-                                    <option value="Femenino">Femenino</option>
-                                    <option value="Masculino">Masculino</option>
-                                </select>
-                            </div>
-                            <div class="input_container password_show">
-                                <label for="check_password">Mostrar contraseña</label>
-                                <input type="checkbox" id="check_password">
-                            </div>
-                            <div class="input-container">
-                                <label for="privacidad">He leído la política de privacidad:</label>
-                                <input type="checkbox" id="privacidad" name="privacidad">
-                                <small class="error" id="privacidadError"></small>
+                                <label for="asunto">Asunto:</label>
+                                <input type="text" id="asunto" name="asunto">
+                                <small class="error" id="asuntoError"></small>
                             </div>
                             <div class="button-container_citas">
-                                <input type="submit" name="registro" value="Actualizar datos">
+                                <input type="submit" name="cita" value="Solicitar cita">
                             </div>
                         </div>
                     </form>
                 </div>
+            </div>
             
         </main>
 
@@ -201,5 +171,7 @@
                 <img src="../../assets/images/steam_footer.png" alt="logo steam&Co" width="166" height="81" title="Logo">
             </div>
         </footer>
+
+        <script src="../../assets/scripts/validacion_citas.js"></script>
     </body>
 </html>
