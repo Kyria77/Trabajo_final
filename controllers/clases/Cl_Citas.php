@@ -10,7 +10,7 @@ class Cita{
     }
 
     //Función para buscar y leer todas las citas un usuario, que aún no hayan ocurrido.
-    public function leerCitaPendiente($idUSer, $mysqli_connection){
+    public function leerCitaPendiente($idUser, $mysqli_connection){
         $select_stmt = null;
     
         try{
@@ -21,7 +21,7 @@ class Cita{
                 return false;
             }
 
-            $select_stmt->bind_param("s", $idUSer);
+            $select_stmt->bind_param("i", $idUser);
     
             if(!$select_stmt->execute()){
                 error_log(("No se pudo ejecutar la sentencia " . $mysqli_connection->error));
@@ -34,7 +34,6 @@ class Cita{
             if($result->num_rows > 0){
                 while($fila = $result->fetch_assoc()){
                     $citas[] = $fila;
-                    echo "<br>";
                 }
                 return $citas;
             }else{
@@ -82,20 +81,20 @@ class Cita{
     }
 
 
-/*
-    //Función para actualizar los datos de un usuario en la tabla users_data de la base de datos
-    public function actualizarUsuario($idUser, $nombre, $apellidos, $telefono, $fnac, $direccion, $sexo, $mysqli_connection){
+
+    //Función para actualizar los datos de una cita de la tabla citas de la base de datos
+    public function actualizarCita($idCita, $fcita, $asunto, $mysqli_connection){
         $insert_stmt = null;
 
         try{
-            $query = "UPDATE users_data SET nombre = ?, apellidos = ?, telefono = ?, fnac = ?, direccion = ?, sexo = ? WHERE idUser = ?";
+            $query = "UPDATE citas SET fecha_cita = ?, motivo_cita = ? WHERE idCita = ?";
             $insert_stmt = $mysqli_connection->prepare($query);
 
             if(!$insert_stmt){
                 error_log("No se preparó la sentencia de actualización: " . $mysqli_connection->error);
                 return false;
             }else{
-                $insert_stmt->bind_param("sssssss", $nombre, $apellidos, $telefono, $fnac, $direccion, $sexo, $idUser);
+                $insert_stmt->bind_param("ssi", $fcita, $asunto, $idCita);
 
                 if(!$insert_stmt->execute()){
                     error_log(("No se ejecutó la sentencia de inserción: ") . $insert_stmt->error);
@@ -111,7 +110,35 @@ class Cita{
     }
 
 
-*/
+    //Función para borrar una cita en la tabla citas de la base de datos
+    public function borrarCita($idCita, $mysqli_connection){
+        $insert_stmt = null;
+
+        try{
+            $query = "DELETE FROM citas WHERE idCita = ?";
+            $insert_stmt = $mysqli_connection->prepare($query);
+
+            if(!$insert_stmt){
+                error_log("No se preparó la sentencia de borrado: " . $mysqli_connection->error);
+                return false;
+            }else{
+                $insert_stmt->bind_param("i", $idCita);
+
+                if(!$insert_stmt->execute()){
+                    error_log(("No se ejecutó la sentencia de inserción: ") . $insert_stmt->error);
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+        }catch(Exception $e){
+            error_log(("Error en la función insertarUsuario: " . $e->getMessage()));
+            header('Location: ../../views/errors/error500.html');
+        }
+    }
+
+
+
 
 
     

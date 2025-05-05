@@ -34,9 +34,7 @@ class Noticia{
             if($result->num_rows > 0){
                 while($fila = $result->fetch_assoc()){
                     $noticias[] = $fila;
-                    echo "<br>";
                 }
-                //echo "Estoy leyendo las noticias";
                 return $noticias;
             }else{
                 echo "No hay noticias disponibles";

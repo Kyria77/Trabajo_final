@@ -52,6 +52,18 @@
                             </li>
                         </ul>
                     <?php
+                    }else if(isset($_SESSION['user_data_all']) && $_SESSION['user_data_all']['rol'] == 'admin'){
+                    ?>
+                        <ul class="navLinks">
+                            <li><a class="inn" href="#">Inicio</a></li>
+                            <li><a class="out" href="views/noticias.php">Noticias</a></li>
+                            <li><a class="out" href="views/admin/usuariosAdmin.php">User Admin</a></li>
+                            <li><a class="out" href="views/admin/citasAdmin.php">Citas Admin</a></li>
+                            <li><a class="out" href="views/admin/noticiasAdmin.php">Noticias Admin</a></li>
+                            <li><a class="out" href="views/users/perfil.php">Perfil</a></li>
+                            <li><a class="out" href="controllers/cerrar_sesion.php">Cerrar sesión</a></li>
+                        </ul>
+                    <?php
                     }else{
                     ?>
                         <ul class="navLinks">

@@ -9,7 +9,7 @@
     }
 
 
-    //Comprobamos que la información nos llega por POST y por el formulario 'registro'.
+    //Comprobamos que la información nos llega por POST y por el formulario 'actualizar'.
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['actualizar'])){
 
         //Saneamos los datos

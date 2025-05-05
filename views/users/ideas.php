@@ -1,6 +1,4 @@
 <?php
-    require_once __DIR__ . '/../../config/config.php';
-
     # Comprobar si existe una sesión activa y en caso de que no así la crearemos
     if(session_status() == PHP_SESSION_NONE){
         session_start();
@@ -44,8 +42,8 @@
                         <ul class="navLinks">
                             <li><a class="out" href="../../index.php">INICIO</a></li>
                             <li><a class="out" href="../steam_dia.php">STEAM AL DÍA</a></li>
-                            <li><a class="out" href="inspirate.php">INSPÍRATE</a></li>
-                            <li><a class="inn" href="#">AGENDA</a></li>
+                            <li><a class="inn" href="#">INSPÍRATE</a></li>
+                            <li><a class="out" href="agenda.php">AGENDA</a></li>
                             <li><a class="out" href="perfil.php">PERFIL</a></li>
                             <li><a class="out" href="../../controllers/cerrar_sesion.php">CERRAR SESIÓN</a></li>
                             <li>
@@ -63,8 +61,8 @@
                     }else{
                     ?>
                         <ul class="navLinks">
-                            <li><a class="out" href="../../index.php">INICIO</a></li>
-                            <li><a class="out" href="../steam_dia.php">STEAM AL DÍA</a></li>
+                            <li><a class="out" href="../index.php">INICIO</a></li>
+                            <li><a class="inn" href="#">STEAM AL DÍA</a></li>
                             <li><a class="out" href="registro.php">REGISTRARSE</a></li>
                             <li><a class="out" href="login.php">LOGIN</a></li>
                             <li>
@@ -92,25 +90,38 @@
 
         <!--Comenzamos con Main. Consta de XXX secciones:-->
         <main>
-            <div class="cartel_agenda">
-                <h2>INSPÍRATE</h2>
+            <div class="main_cabecera">
+                <div class="cartel_inspirate">
+                    <h2>INSPÍRATE</h2>
+                </div>
+                <nav class="main_nav_content">
+                    <ul class="main_navLinks">
+                        <li><a class="inn_inspirate" href="#">Ideas</a></li>
+                        <li><a class="out" href="arte.php">Arte</a></li>
+                        <li><a class="out" href="comunidad.php">Comunidad</a></li>
+                    </ul>
+                </nav>
             </div>
-            <div class="main_sections_content">
-                <div class="agenda_eventos">
-                    <div class="rosa">
-                        <h2>Eventos</h2>
-                        <h3>PROXIMAMENTE</h3>
-
+            <div class="noticias_content">
+                <div class="noticia">
+                    <h2>Un juego de mesa inventado hace 5 mil años. Construirlo y jugarlo. Una actividad STEAM</h2>
+                    <div class="noticia_grueso">
+                        <div class="noticia_texto">
+                            <p>El senet es un juego de mesa inventado en el antiguo Egipto. Parece ser que jugarlo era una actividad muy popular en aquella época y que lo practicaban gentes de todo tipo: desde la realeza hasta el pueblo llano. Por lo que se sabe, era un juego que requería azar y estrategia a partes iguales; podríamos describirlo como una especie de mezcla entre la oca, el parchís y el ajedrez.</p>
+                            <p>El juego físico solía ser una caja cuya tapa hacía las veces de tablero y que contenía unas fichas y unas tablillas con las que se jugaba. Algunos ejemplares de este juego, de gran belleza y hechos con materiales nobles, han aparecido entre los ajuares funerarios de personas importantes de aquella época, incluidos varios faraones.</p>
+                            <p>Las reglas del senet se han deducido a partir de diversas investigaciones. No ha sido fácil porque no existen registros escritos sobre ellas. Puede que, al ser un juego tan popular, todo el mundo lo conociera y las reglas pasaran por tradición oral. También puede que variaran dependiendo de la región o de la época. Aquí se propone una de las formas de jugar más sencillas.</p>
+                            <p>El objetivo es hacer avanzar las fichas por el tablero siguiendo la numeración de las casillas hasta sacarlas por la casilla 30 antes que el adversario y teniendo en cuenta unas reglas simples.</p>
+                            <p>Para mover sus fichas, cada jugador debe lanzar las tablillas que hacen de dados para obtener un número. Dichas tablillas funcionan de la siguiente forma: No existe el número 5 en el senet.</p>
+                            <p>El primer jugador lanza los dados (las tablillas) y mueve una de sus fichas tantas casillas como indique el número que sacó. El turno de tirada de ese jugador continuará mientras no saque un 2 o un 4. Si saca 1, 3 o 6, puede seguir tirando y moviendo las fichas que quiera.</p>
+                            <p>Requiere de una cierta estrategia para colocar las fichas y aprovechar las protecciones. Jugando, aprenderéis los trucos.</p>
+                        </div>
+                        <div class="noticia_img">
+                            <img src="../../assets/images/juegoEgipcio.png" alt="Imagen egipciA" width="672" height="488" title="Juego egipcio">
+                        </div>
                     </div>
                 </div>
-                <div class="agenda_agenda">
-                    <div class="rosa">
-                        <h2>Agenda</h2>
-                        <h3>PROXIMAMENTE</h3>
-
-                    </div>
-                </div>
             </div>
+            
         </main>
 
         <!--Comenzamos con el Footer, con los derechos, datos de la empresa, iconos redes sociales-->

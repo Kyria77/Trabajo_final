@@ -1,11 +1,16 @@
 <?php
-    require_once __DIR__ . '/../config/config.php';
-
-    //Comprobar si existe una sesión activa y en caso de que no así la crearemos
+    # Comprobar si existe una sesión activa y en caso de que no así la crearemos
     if(session_status() == PHP_SESSION_NONE){
         session_start();
     }
 
+    # Redirigir al LOGIN si el usuario no ha iniciaco sesión (es decir, si no existe user_id)
+    if(!isset($_SESSION['user_data_all'])){
+        $_SESSION["mensaje_error"] = "Lo sentimos, debes iniciar sesión primero";
+        header("Location: ../../views/login.php");
+        exit();
+
+    }
 ?>
 
 <!DOCTYPE html>
@@ -19,15 +24,15 @@
         <meta name="keywords" content="docente, acompañamiento, alumno, ciencias, biologia, tecnologia, fisica, ideas clases, competenciales, actividad">
         <meta name="revisit-after" content="2 days">
 
-        <link rel="stylesheet" href="../assets/css/style.css">
-        <link rel="stylesheet" href="../assets/css/style_others.css">
-        <link rel="icon" type="image/png" href="../favicon.png">
+        <link rel="stylesheet" href="../../assets/css/style.css">
+        <link rel="stylesheet" href="../../assets/css/style_others.css">
+        <link rel="icon" type="image/png" href="../../favicon.png">
     </head>
     <body>
         <!--Comenzamos con Header, nuetra cabecera con el logo, la barra de navegación e introducción-->
         <header>
             <div class="logo">
-                <img src="../assets/images/Steam_blanco.png" alt="logo steam&Co" width="414" height="216" title="Logo">
+                <img src="../../assets/images/Steam_blanco.png" alt="logo steam&Co" width="414" height="216" title="Logo">
             </div>
             <div class="header_content">
                 <nav class="nav_content">
@@ -35,20 +40,20 @@
                     if(isset($_SESSION['user_data_all']) && $_SESSION['user_data_all']['rol'] == 'user'){
                     ?>
                         <ul class="navLinks">
-                            <li><a class="out" href="../index.php">INICIO</a></li>
-                            <li><a class="inn" href="#">STEAM AL DÍA</a></li>
-                            <li><a class="out" href="users/inspirate.php">INSPÍRATE</a></li>
-                            <li><a class="out" href="users/agenda.php">AGENDA</a></li>
-                            <li><a class="out" href="users/perfil.php">PERFIL</a></li>
-                            <li><a class="out" href="users/cerrar_sesion.php">CERRAR SESIÓN</a></li>
+                            <li><a class="out" href="../../index.php">INICIO</a></li>
+                            <li><a class="out" href="../steam_dia.php">STEAM AL DÍA</a></li>
+                            <li><a class="inn" href="#">INSPÍRATE</a></li>
+                            <li><a class="out" href="agenda.php">AGENDA</a></li>
+                            <li><a class="out" href="perfil.php">PERFIL</a></li>
+                            <li><a class="out" href="../../controllers/cerrar_sesion.php">CERRAR SESIÓN</a></li>
                             <li>
                                 <a href="https://www.instagram.es" title="Enlace a Instagram">
-                                    <img src="../assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
+                                    <img src="../../assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
                                 </a>
                             </li>
                             <li>
                                 <a href="https://www.youtube.com" title="Enlace a YouTube">
-                                    <img src="../assets/images/youtube.png" alt="icono de YouTube" width="32" height="32" title="icono YouTube">
+                                    <img src="../../assets/images/youtube.png" alt="icono de YouTube" width="32" height="32" title="icono YouTube">
                                 </a>
                             </li>
                         </ul>
@@ -57,7 +62,7 @@
                     ?>
                         <ul class="navLinks">
                             <li><a class="out" href="../index.php">INICIO</a></li>
-                            <li><a class="out" href="#">STEAM AL DÍA</a></li>
+                            <li><a class="inn" href="#">STEAM AL DÍA</a></li>
                             <li><a class="out" href="registro.php">REGISTRARSE</a></li>
                             <li><a class="out" href="login.php">LOGIN</a></li>
                             <li>
@@ -85,38 +90,32 @@
 
         <!--Comenzamos con Main. Consta de XXX secciones:-->
         <main>
-            <div class="cartel_steamAlDia">
-                <h2>STEAM AL DÍA</h2>
+            <div class="main_cabecera">
+                <div class="cartel_inspirate">
+                    <h2>INSPÍRATE</h2>
+                </div>
+                <nav class="main_nav_content">
+                    <ul class="main_navLinks">
+                        <li><a class="out" href="ideas.php">Ideas</a></li>
+                        <li><a class="out" href="arte.php">Arte</a></li>
+                        <li><a class="inn_inspirate" href="#">Comunidad</a></li>
+                    </ul>
+                </nav>
             </div>
-            <div class="main_sections_content">
-                <div class="steam_dia_noticias">
-                    <div class="amarillo">
-                        <h2>Actualidad científica</h2>
-                        <h3>Noticias</h3>
-                        <div class="main_btn">
-                            <a href="noticias.php">VER MÁS</a>
+            <div class="noticias_content">
+                <div class="noticia">
+                    <h2>Envíanos tus inventos para las clases</h2>
+                    <div class="noticia_grueso">
+                        <div class="noticia_texto">
+                            <p>Esta es una sección dedicada a crear una estupenda comunidad en la que podamos compartir las ideas e inventos de ccada uno de nosotros en nuestras clases.</p>
                         </div>
-                    </div>
-                </div>
-                <div class="steam_dia_perfiles">
-                    <div class="amarillo">
-                        <h2>Perfiles</h2>
-                        <h3>Mº Carmen Martínez Rodríguez</h3>
-                        <div class="main_btn">
-                            <a href="perfiles.php">VER MÁS</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="steam_dia_biblioteca">
-                    <div class="amarillo">
-                        <h2>Biblioteca</h2>
-                        <h3>Si no funciona, evoluciona</h3>
-                        <div class="main_btn">
-                            <a href="biblioteca.php">VER MÁS</a>
+                        <div class="noticia_img">
+                            <img src="../../assets/images/comunidad.png" alt="grupo juntando las manos" width="672" height="494" title="grupo juntando las manos">
                         </div>
                     </div>
                 </div>
             </div>
+            
         </main>
 
         <!--Comenzamos con el Footer, con los derechos, datos de la empresa, iconos redes sociales-->
@@ -125,12 +124,12 @@
                 <ul class="redes">
                     <li>
                         <a href="https://www.instagram.es" title="Enlace a Instagram">
-                            <img src="../assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
+                            <img src="../../assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
                         </a>
                     </li>
                     <li>
                         <a href="https://www.youtube.com" title="Enlace a YouTube">
-                            <img src="../assets/images/youtube.png" alt="icono de YouTube" width="32" height="32" title="icono YouTube">
+                            <img src="../../assets/images/youtube.png" alt="icono de YouTube" width="32" height="32" title="icono YouTube">
                         </a>
                     </li>
                 </ul>
@@ -144,7 +143,7 @@
                     <p>Aviso Legal | Política de Cookies | Política de Privacidad</p>
             </div>
             <div class="footer_logo">
-                <img src="../assets/images/steam_footer.png" alt="logo steam&Co" width="166" height="81" title="Logo">
+                <img src="../../assets/images/steam_footer.png" alt="logo steam&Co" width="166" height="81" title="Logo">
             </div>
         </footer>
     </body>

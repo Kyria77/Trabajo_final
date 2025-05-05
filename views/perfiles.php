@@ -1,9 +1,4 @@
 <?php
-    require_once '../controllers/clases/Cl_Noticias.php';
-    $noticiaObj = new Noticia();
-    $noticias = $noticiaObj->leerNoticia($mysqli_connection);
-    //print_r($noticias);
-
     //Comprobar si existe una sesión activa y en caso de que no así la crearemos
     if(session_status() == PHP_SESSION_NONE){
         session_start();
@@ -53,6 +48,18 @@
                                     <img src="../assets/images/youtube.png" alt="icono de YouTube" width="32" height="32" title="icono YouTube">
                                 </a>
                             </li>
+                        </ul>
+                    <?php
+                    }else if(isset($_SESSION['user_data_all']) && $_SESSION['user_data_all']['rol'] == 'admin'){
+                    ?>
+                        <ul class="navLinks">
+                            <li><a class="out" href="../index.php">Inicio</a></li>
+                            <li><a class="inn" href="#">Noticias</a></li>
+                            <li><a class="out" href="admin/usuariosAdmin.php">User Admin</a></li>
+                            <li><a class="out" href="admin/citasAdmin.php">Citas Admin</a></li>
+                            <li><a class="out" href="admin/noticiasAdmin.php">Noticias Admin</a></li>
+                            <li><a class="out" href="users/perfil.php">Perfil</a></li>
+                            <li><a class="out" href="../controllers/cerrar_sesion.php">Cerrar sesión</a></li>
                         </ul>
                     <?php
                     }else{

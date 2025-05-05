@@ -144,6 +144,7 @@
                         ?>
                         <div class="cita">
                             <form class="form_citas" id="form_citas" name="form_citas" method="POST" action="../../controllers/c_citas.php">
+                                <input type="hidden" name="idCita" value="<?php echo $cita['idCita']; ?>">
                                 <div class="infoForm-container">
                                     <div class="input-container">
                                         <label for="fcita">Fecha:</label>

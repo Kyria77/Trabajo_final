@@ -114,7 +114,7 @@ header{
     background-image: url(../images/agenda.png);
     padding-left: 2em;
 }
-.steam_dia, .inspirate, .agenda, .steam_dia_noticias, .steam_dia_perfiles, .steam_dia_biblioteca{
+.steam_dia, .inspirate, .agenda, .steam_dia_noticias, .steam_dia_perfiles, .steam_dia_biblioteca, .inspirate_ideas, .inspirate_arte, .inspirate_comunidad, .agenda_eventos, .agenda_agenda{
     /*border: 1px solid black;*/
     width: 33%;
     height: 650px;

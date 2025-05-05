@@ -6,7 +6,7 @@
     height: auto;
 }
 
-.cartel_steamAlDia, .cartel_registro, .cartel_login, .cartel_citas{
+.cartel_steamAlDia, .cartel_registro, .cartel_login, .cartel_citas, .cartel_inspirate, .cartel_agenda{
     width: 20%;
     background-color: #ffed00;
     padding: 1.3em;
@@ -24,7 +24,7 @@
     background-image: url(../images/biblioteca.png);
     padding-top: 1.5em;
 }
-.steam_dia_noticias h3, .steam_dia_perfiles h3, .steam_dia_biblioteca h3{
+.steam_dia_noticias h3, .steam_dia_perfiles h3, .steam_dia_biblioteca h3, .inspirate_ideas h3, .inspirate_arte h3, .inspirate_comunidad h3{
     padding-bottom: 1.5em;
 }
 
@@ -236,4 +236,43 @@
 .button-container_gestion_citas input:hover{
     background-color: rgb(248, 193, 148);
     transform: translateY(-5px);
+}
+
+/*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* MAIN SECCIONES INSPIRATE *-**-*-*-*-*-*-*-*-*-*-*
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
+.cartel_inspirate{
+    background-color: rgba(0, 159, 227);
+}
+.inspirate_ideas{
+    background-image: url(../images/ideas.png);
+    padding-top: 1.5em;
+}
+.inspirate_arte{
+    background-image: url(../images/arte.png);
+    padding-top: 1.5em;
+}
+.inspirate_comunidad{
+    background-image: url(../images/comunidad.png);
+    padding-top: 1.5em;
+}
+.inn_inspirate{
+    border-bottom: 3px solid rgba(0, 159, 227);
+}
+/*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* MAIN SECCIONES AGENDA *-**-*-*-*-*-*-*-*-*-*-*
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
+.cartel_agenda{
+    background-color: rgb(230, 0, 126);
+}
+.agenda_eventos{
+    background-image: url(../images/eventos.png);
+    padding-top: 1.5em;
+}
+.agenda_agenda{
+    background-image: url(../images/agenda_agenda.png);
+    padding-top: 1.5em;
+}
+.inn_agenda{
+    border-bottom: 3px solid rgb(230, 0, 126);
 }

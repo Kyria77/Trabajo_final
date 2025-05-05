@@ -7,15 +7,12 @@
     }
 
     # Redirigir al LOGIN si el usuario no ha iniciaco sesión (es decir, si no existe user_id)
-    if(isset($_SESSION['user_data_all'])){
-        $user_data = $_SESSION['user_data_all'];
-
-    }else{
+    if(!isset($_SESSION['user_data_all']) && $_SESSION['user_data_all']['rol'] !== 'admin'){
         $_SESSION["mensaje_error"] = "Lo sentimos, debes iniciar sesión primero";
         header("Location: ../../views/login.php");
         exit();
-    }
 
+    }
 ?>
 
 <!DOCTYPE html>
@@ -41,48 +38,17 @@
             </div>
             <div class="header_content">
                 <nav class="nav_content">
-                <?php
-                    if(isset($_SESSION['user_data_all']) && $_SESSION['user_data_all']['rol'] == 'user'){
-                ?>
-                        <ul class="navLinks">
-                            <li><a class="out" href="../../index.php">INICIO</a></li>
-                            <li><a class="out" href="../steam_dia.php">STEAM AL DÍA</a></li>
-                            <li><a class="out" href="inspirate.php">INSPÍRATE</a></li>
-                            <li><a class="out" href="agenda.php">AGENDA</a></li>
-                            <li><a class="inn" href="#">PERFIL</a></li>
-                            <li><a class="out" href="../../controllers/cerrar_sesion.php">CERRAR SESIÓN</a></li>
-                            <li>
-                                <a href="https://www.instagram.es" title="Enlace a Instagram">
-                                    <img src="../../assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.youtube.com" title="Enlace a YouTube">
-                                    <img src="../../assets/images/youtube.png" alt="icono de YouTube" width="32" height="32" title="icono YouTube">
-                                </a>
-                            </li>
-                        </ul>
-                    <?php
-                    }else{
-                    ?>
-                        <ul class="navLinks">
-                            <li><a class="out" href="../../index.php">Inicio</a></li>
-                            <li><a class="out" href="../noticias.php">Noticias</a></li>
-                            <li><a class="out" href="../admin/usuariosAdmin.php">User Admin</a></li>
-                            <li><a class="out" href="../admin/citasAdmin.php">Citas Admin</a></li>
-                            <li><a class="out" href="../admin/noticiasAdmin.php">Noticias Admin</a></li>
-                            <li><a class="inn" href="#">Perfil</a></li>
-                            <li><a class="out" href="../../controllers/cerrar_sesion.php">Cerrar sesión</a></li>
-                        </ul>
-                    <?php
-                    }
-                    ?>
+                    <ul class="navLinks">
+                        <li><a class="out" href="../../index.php">Inicio</a></li>
+                        <li><a class="out" href="../noticias.php">Noticias</a></li>
+                        <li><a class="inn" href="#">User Admin</a></li>
+                        <li><a class="out" href="citasAdmin.php">Citas Admin</a></li>
+                        <li><a class="out" href="noticiasAdmin.php">Noticias Admin</a></li>
+                        <li><a class="out" href="../users/perfil.php">Perfil</a></li>
+                        <li><a class="out" href="../../controllers/cerrar_sesion.php">Cerrar sesión</a></li>
+                    </ul>
                 </nav>
-                <div class="presentation_content">
-                    <h1>Únete</h1>
-                    <p>Regístrate para beneficiarte de todo lo que ofrecemos</p>
-                    <p>¿Nos acompañamos?</p>
-                </div>
+
             </div>
         </header>
 
@@ -95,13 +61,7 @@
                 <nav class="main_nav_content">
                     <ul class="main_navLinks">
                         <li><a class="inn_login" href="#">Perfil</a></li>
-                        <?php
-                        if(isset($_SESSION['user_data_all']) && $_SESSION['user_data_all']['rol'] == 'user'){
-                        ?>
                         <li><a class="out_login" href="citas.php">Citas</a></li>
-                        <?php
-                        }
-                        ?>
                         <li><a class="out_login" href="../../controllers/cerrar_sesion.php">Cerrar sesión</a></li>
                     </ul>
                 </nav>
