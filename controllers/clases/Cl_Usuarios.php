@@ -176,6 +176,34 @@ class Usuario{
         }*/
     }
 
+    //Función para actualizar los datos de un usuario en la tabla users_data de la base de datos
+    public function actualizarUsuario($idUser, $nombre, $apellidos, $telefono, $fnac, $direccion, $sexo, $mysqli_connection){
+        $insert_stmt = null;
+
+        try{
+            $query = "UPDATE users_data SET nombre = ?, apellidos = ?, telefono = ?, fnac = ?, direccion = ?, sexo = ? WHERE idUser = ?";
+            $insert_stmt = $mysqli_connection->prepare($query);
+
+            if(!$insert_stmt){
+                error_log("No se preparó la sentencia de actualización: " . $mysqli_connection->error);
+                return false;
+            }else{
+                $insert_stmt->bind_param("sssssss", $nombre, $apellidos, $telefono, $fnac, $direccion, $sexo, $idUser);
+
+                if(!$insert_stmt->execute()){
+                    error_log(("No se ejecutó la sentencia de inserción: ") . $insert_stmt->error);
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+        }catch(Exception $e){
+            error_log(("Error en la función insertarUsuario: " . $e->getMessage()));
+            header('Location: ../../views/errors/error500.html');
+        }
+    }
+
+
     //Función para buscar a un usuario y sus datos a través del email en la tabla users_login de la base de datos
     public function read_user_login($email, $mysqli_connection, &$exception_error){
         $select_stmt = null;
@@ -299,6 +327,33 @@ class Usuario{
             if($select_stmt !== null){
                 $select_stmt->close();
             }
+        }
+    }
+
+    //Función para actualizar los datos de un usuario en la tabla users_login de la base de datos
+    public function update_user_login($idUser, $password, $mysqli_connection){
+        $insert_stmt = null;
+
+        try{
+            $query = "UPDATE users_login SET pass = ? WHERE idUser = ?";
+            $insert_stmt = $mysqli_connection->prepare($query);
+
+            if(!$insert_stmt){
+                error_log("No se preparó la sentencia de actualización: " . $mysqli_connection->error);
+                return false;
+            }else{
+                $insert_stmt->bind_param("ss", $password, $idUser);
+
+                if(!$insert_stmt->execute()){
+                    error_log(("No se ejecutó la sentencia de inserción: ") . $insert_stmt->error);
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+        }catch(Exception $e){
+            error_log(("Error en la función insertarUsuario: " . $e->getMessage()));
+            header('Location: ../../views/errors/error500.html');
         }
     }
     

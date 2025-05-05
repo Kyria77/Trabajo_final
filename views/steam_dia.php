@@ -40,7 +40,7 @@
                             <li><a class="out" href="users/inspirate.php">INSPÍRATE</a></li>
                             <li><a class="out" href="users/agenda.php">AGENDA</a></li>
                             <li><a class="out" href="users/perfil.php">PERFIL</a></li>
-                            <li><a class="out" href="users/cerrar_sesion.php">CERRAR SESIÓN</a></li>
+                            <li><a class="out" href="../controllers/cerrar_sesion.php">CERRAR SESIÓN</a></li>
                             <li>
                                 <a href="https://www.instagram.es" title="Enlace a Instagram">
                                     <img src="../assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">

@@ -10,11 +10,6 @@
     if(isset($_SESSION['user_data_all'])){
         $user_data = $_SESSION['user_data_all'];
 
-        print_r($user_data);
-
-        /*foreach($user_data as $key => $value){
-            echo "$key: $value <br>";
-        }*/
     }else{
         $_SESSION["mensaje_error"] = "Lo sentimos, debes iniciar sesión primero";
         header("Location: ../../views/login.php");
@@ -52,7 +47,7 @@
                         <li><a class="out" href="inspirate.php">INSPÍRATE</a></li>
                         <li><a class="out" href="agenda.php">AGENDA</a></li>
                         <li><a class="inn" href="#">PERFIL</a></li>
-                        <li><a class="out" href="cerrar_sesion.php">CERRAR SESIÓN</a></li>
+                        <li><a class="out" href="../../controllers/cerrar_sesion.php">CERRAR SESIÓN</a></li>
                         <li>
                             <a href="https://www.instagram.es" title="Enlace a Instagram">
                                 <img src="../../assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
@@ -89,87 +84,87 @@
             </div>
 
             <div class="aviso_registro">
-                    <?php
-                        //Comprobar si hay mensajes de error
-                        if(isset($_SESSION["mensaje_error"])){
-                            echo "<span class='error_message'>" . $_SESSION['mensaje_error'] . "</span>";
+                <?php
+                    //Comprobar si hay mensajes de error
+                    if(isset($_SESSION["mensaje_error"])){
+                        echo "<span class='error_message'>" . $_SESSION['mensaje_error'] . "</span>";
 
-                            //Eliminar el mensaje de error
-                            unset($_SESSION["mensaje_error"]);
-                        }
+                        //Eliminar el mensaje de error
+                        unset($_SESSION["mensaje_error"]);
+                    }
                             
 
-                        //Comprobar si hay mensajes de exito
-                        if(isset($_SESSION["mensaje_exito"])){
-                            echo "<span class='success_message'>" . $_SESSION['mensaje_exito'] . "</span>";
+                    //Comprobar si hay mensajes de exito
+                    if(isset($_SESSION["mensaje_exito"])){
+                        echo "<span class='success_message'>" . $_SESSION['mensaje_exito'] . "</span>";
 
-                            //Eliminar el mensaje de error
-                            unset($_SESSION["mensaje_exito"]);
-                        }
-                    ?>
-                </div>
+                        //Eliminar el mensaje de error
+                        unset($_SESSION["mensaje_exito"]);
+                    }
+                ?>
+            </div>
 
-                <div class="formulario-container">
-                    <form class="form_actualizar" id="form_actualizar" name="form_actualizar" method="POST" action="../controllers/c_registro.php">
-                        <div class="infoForm-container">
-                            <div class="input-container">
-                                <label for="nombre">Nombre:</label>
-                                <input type="text" id="nombre" name="nombre">
-                                <small class="error" id="nombreError"></small>
-                            </div>
-                            <div class="input-container">
-                                <label for="apellidos">Apellidos:</label>
-                                <input type="text" id="apellidos" name="apellidos">
-                                <small class="error" id="apellidosError"></small>
-                            </div>
-                            <div class="input-container">
-                                <label for="telefono">Teléfono:</label>
-                                <input type="tel" id="telefono" name="telefono">
-                                <small class="error" id="telefonoError"></small>
-                            </div>
-                            <div class="input-container">
-                                <label for="email">Email:</label>
-                                <input type="text" id="email" name="email" placeholder="Deshabilitado" disabled>
-                                <small class="error" id="emailError"></small>
-                            </div>
-                            <div class="input-container">
-                                <label for="password">Contraseña:</label>
-                                <input type="password" id="password" name="password">
-                                <small class="error" id="passwordError"></small>
-                            </div>
-                            <div class="input-container">
-                                <label for="fnac">Fecha de nacimiento:</label>
-                                <input type="date" id="fnac" name="fnac">
-                                <small class="error" id="fnacError"></small>
-                            </div>
-                            <div class="input-container">
-                                <label for="direccion">Dirección:</label>
-                                <input type="text" id="direccion" name="direccion">
-                                <small class="error" id="direccionError"></small>
-                            </div>
-                            <div class="input-container">
-                                <label for="sexo">Sexo:</label>
-                                <select id="selectFormacion" name="sexo">
-                                    <option value="Prefiero no responder" selected>Prefiero no responder</option>
-                                    <option value="Femenino">Femenino</option>
-                                    <option value="Masculino">Masculino</option>
-                                </select>
-                            </div>
-                            <div class="input_container password_show">
-                                <label for="check_password">Mostrar contraseña</label>
-                                <input type="checkbox" id="check_password">
-                            </div>
-                            <div class="input-container">
-                                <label for="privacidad">He leído la política de privacidad:</label>
-                                <input type="checkbox" id="privacidad" name="privacidad">
-                                <small class="error" id="privacidadError"></small>
-                            </div>
-                            <div class="button-container_login">
-                                <input type="submit" name="registro" value="Actualizar datos">
-                            </div>
+            <div class="formulario-container">
+                <form class="form_actualizar" id="form_actualizar" name="form_actualizar" method="POST" action="../../controllers/c_perfil.php">
+                    <div class="infoForm-container">
+                        <div class="input-container">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" name="nombre" value="<?php echo $user_data['nombre']; ?>">
+                            <small class="error" id="nombreError"></small>
                         </div>
-                    </form>
-                </div>
+                        <div class="input-container">
+                            <label for="apellidos">Apellidos:</label>
+                            <input type="text" id="apellidos" name="apellidos" value="<?php echo $user_data['apellidos']; ?>">
+                            <small class="error" id="apellidosError"></small>
+                        </div>
+                        <div class="input-container">
+                            <label for="telefono">Teléfono:</label>
+                            <input type="tel" id="telefono" name="telefono" value="<?php echo $user_data['telefono']; ?>">
+                            <small class="error" id="telefonoError"></small>
+                        </div>
+                        <div class="input-container">
+                            <label for="email">Email:</label>
+                            <input type="text" id="email" name="email" value="<?php echo $user_data['email']; ?>" disabled>
+                            <small class="error" id="emailError"></small>
+                        </div>
+                        <div class="input-container">
+                            <label for="password">Contraseña:</label>
+                            <input type="password" id="password" name="password">
+                            <small class="error" id="passwordError"></small>
+                        </div>
+                        <div class="input-container">
+                            <label for="fnac">Fecha de nacimiento:</label>
+                            <input type="date" id="fnac" name="fnac" value="<?php echo $user_data['fnac']; ?>">
+                            <small class="error" id="fnacError"></small>
+                        </div>
+                        <div class="input-container">
+                            <label for="direccion">Dirección:</label>
+                            <input type="text" id="direccion" name="direccion" value="<?php echo $user_data['direccion']; ?>">
+                            <small class="error" id="direccionError"></small>
+                        </div>
+                        <div class="input-container">
+                            <label for="sexo">Sexo:</label>
+                            <select id="selectFormacion" name="sexo">
+                                <option value="Prefiero no responder" <?php echo ($user_data['sexo'] == 'Prefiero no responder') ? 'selected' : ''; ?>>Prefiero no responder</option>
+                                <option value="Femenino" <?php echo ($user_data['sexo'] == 'Femenino') ? 'selected' : ''; ?>>Femenino</option>
+                                <option value="Masculino" <?php echo ($user_data['sexo'] == 'Masculino') ? 'selected' : ''; ?>>Masculino</option>
+                            </select>
+                        </div>
+                        <div class="input_container password_show">
+                            <label for="check_password">Mostrar contraseña</label>
+                            <input type="checkbox" id="check_password">
+                        </div>
+                        <div class="input-container">
+                            <label for="privacidad">He leído la política de privacidad:</label>
+                            <input type="checkbox" id="privacidad" name="privacidad">
+                            <small class="error" id="privacidadError"></small>
+                        </div>
+                        <div class="button-container_login">
+                            <input type="submit" name="actualizar" value="Actualizar datos">
+                        </div>
+                    </div>
+                </form>
+            </div>
             
         </main>
 
@@ -201,5 +196,8 @@
                 <img src="../../assets/images/steam_footer.png" alt="logo steam&Co" width="166" height="81" title="Logo">
             </div>
         </footer>
+
+        <script src="../../assets/scripts/show_password.js"></script>
+        <script src="../../assets/scripts/validacion_registro.js"></script>
     </body>
 </html>

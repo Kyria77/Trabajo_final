@@ -39,7 +39,7 @@
                             <li><a class="out" href="views/users/inspirate.php">INSPÍRATE</a></li>
                             <li><a class="out" href="views/users/agenda.php">AGENDA</a></li>
                             <li><a class="out" href="views/users/perfil.php">PERFIL</a></li>
-                            <li><a class="out" href="views/users/cerrar_sesion.php">CERRAR SESIÓN</a></li>
+                            <li><a class="out" href="controllers/cerrar_sesion.php">CERRAR SESIÓN</a></li>
                             <li>
                                 <a href="https://www.instagram.es" title="Enlace a Instagram">
                                     <img src="assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
@@ -84,8 +84,30 @@
             </div>
         </header>
 
+        <div class="aviso_registro">
+                <?php
+                    //Comprobar si hay mensajes de error
+                    if(isset($_SESSION["mensaje_error"])){
+                        echo "<span class='error_message'>" . $_SESSION['mensaje_error'] . "</span>";
+
+                        //Eliminar el mensaje de error
+                        unset($_SESSION["mensaje_error"]);
+                    }
+                            
+
+                    //Comprobar si hay mensajes de exito
+                    if(isset($_SESSION["mensaje_exito"])){
+                        echo "<span class='success_message'>" . $_SESSION['mensaje_exito'] . "</span>";
+
+                        //Eliminar el mensaje de error
+                        unset($_SESSION["mensaje_exito"]);
+                    }
+                ?>
+            </div>
+
         <!--Comenzamos con Main. Consta de XXX secciones:-->
         <main>
+
             <div class="main_sections_content">
                 <div class="steam_dia">
                     <div class="amarillo">

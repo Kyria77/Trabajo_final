@@ -58,7 +58,7 @@
                 if(password_verify($password, $user['pass'])){
                     $_SESSION['user_data_all'] = $user;
                     $_SESSION['mensaje_exito'] = "Inicio de sesión correcto. Welcome, " . $user['nombre'] . "!";
-                    header('Location: ../views/users/perfil.php');
+                    header('Location: ../index.php');
                     exit();
                 }else{
                     //Si la contraseña no coincide
