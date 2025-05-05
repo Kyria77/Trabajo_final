@@ -35,7 +35,7 @@
             <div class="header_content">
                 <nav class="nav_content">
                 <?php
-                    if(isset($_SESSION['user_data_all'])){
+                    if(isset($_SESSION['user_data_all']) && $_SESSION['user_data_all']['rol'] == 'user'){
                     ?>
                         <ul class="navLinks">
                             <li><a class="out" href="../index.php">INICIO</a></li>
@@ -95,8 +95,8 @@
                 <nav class="main_nav_content">
                     <ul class="main_navLinks">
                         <li><a class="inn" href="#">Noticias</a></li>
-                        <li><a class="out" href="./perfiles.php">Perfiles</a></li>
-                        <li><a class="out" href="/views/biblioteca.php">Biblioteca</a></li>
+                        <li><a class="out" href="perfiles.php">Perfiles</a></li>
+                        <li><a class="out" href="biblioteca.php">Biblioteca</a></li>
                     </ul>
                 </nav>
             </div>
