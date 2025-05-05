@@ -4,14 +4,11 @@
     require_once __DIR__ . '/../config/config.php';
     require_once __DIR__ . '/clases/Cl_Citas.php';
 
-    //Comprobamos si existe una sesión activa, y si no hay, la creamos.
     if(session_status() == PHP_SESSION_NONE){
         session_start();
     }
 
-    //echo "He iniciado sesión";
-
-    //Comprobamos que la información nos llega por POST y por el formulario 'registro'.
+    //Comprobamos que la información nos llega por POST y por el formulario 'citas'.
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['cita'])){
 
         //Saneamos los datos
@@ -37,38 +34,17 @@
 
         try{
             $exception_error = false;
-            $usuarioObj = new Usuario();
+            $citaObj = new Cita();
+            $idUser = $_SESSION['user_data_all']['idUser'];
 
-            //Si el resultado de comprobarUsuario es true, ese usuario ya existe
-            if($usuarioObj->comprobarUsuario($email, $mysqli_connection, $exception_error)){
-                $_SESSION['mensaje_error'] = "El usuario ya existe en la base de datos";
-                header("Location: ../views/registro.php");
+            if($citaObj->insertarCita($idUser, $fcita, $asunto, $mysqli_connection, $exception_error)){
+                $_SESSION['mensaje_exito'] = "La cita se ha registrado correctamente";
+                header("Location: ../views/users/citas.php");
                 exit();
             }else{
-                if($usuarioObj->insertarUsuario($nombre, $apellidos, $email, $telefono, $fnac, $direccion, $sexo, $mysqli_connection, $exception_error)){
-                    $_SESSION['mensaje_exito'] = "El usuario se ha registrado en data perfectamente";
-                    //header("Location: ../views/registro.php");
-                    //exit();
-                }else{
-                    $_SESSION['mensaje_error'] = "El usuario no se ha podido registrar";
-                    //header('Location: ../views/errors/error500.html');
-                    //exit();
-                }
-
-                $datosUsuario = $usuarioObj->leerUsuarioByEmail($email, $mysqli_connection, $exception_error);
-                if($datosUsuario){
-                    $id = $datosUsuario['idUser'];
-                    $rol = "user";
-                    if($usuarioObj->insert_user_login($id, $email, $pass, $rol, $mysqli_connection, $exception_error)){
-                        $_SESSION['mensaje_exito'] = "El usuario se ha registrado correctamente";
-                        header("Location: ../views/login.php");
-                        exit();
-                    }else{
-                        $_SESSION['mensaje_error'] = "El usuario no se ha podido registrar";
-                        header('Location: ../views/errors/error500.html');
-                        exit();
-                    }
-                }
+                $_SESSION['mensaje_error'] = "La cita no se ha podido registrar";
+                header('Location: ../views/errors/error500.html');
+                exit();
             }
         }catch(Exception $e){
             error_log("Error en registro: " . $e->getMessage());

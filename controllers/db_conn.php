@@ -20,8 +20,6 @@ function db_conn(){
                 //Registramos el error en el archivo log
                 error_log("Fallo al conectar a la base de datos: " . $mysqli_conn -> connect_errno);
                 return null;
-            }else{
-                echo "La conexión ha funcionado correctamente";
             }
         } catch(Exception $e){
             //Registramos la excepción en el archivo log

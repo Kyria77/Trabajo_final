@@ -1,26 +1,24 @@
 <?php
     require_once __DIR__ . '/../../config/config.php';
+    require_once '../../controllers/clases/Cl_Citas.php';
 
-    # Comprobar si existe una sesión activa y en caso de que no así la crearemos
+    //Comprobar si existe una sesión activa y en caso de que no así la crearemos
     if(session_status() == PHP_SESSION_NONE){
         session_start();
     }
 
-    # Redirigir al LOGIN si el usuario no ha iniciaco sesión (es decir, si no existe user_id)
+    //Redirigir al LOGIN si el usuario no ha iniciaco sesión (es decir, si no existe user_id)
     if(isset($_SESSION['user_data_all'])){
         $user_data = $_SESSION['user_data_all'];
-
-        print_r($user_data);
-
-        /*foreach($user_data as $key => $value){
-            echo "$key: $value <br>";
-        }*/
     }else{
         $_SESSION["mensaje_error"] = "Lo sentimos, debes iniciar sesión primero";
         header("Location: ../../views/login.php");
         exit();
     }
 
+    $citaObj = new Cita();
+    $idUser = $_SESSION['user_data_all']['idUser'];
+    $citas = $citaObj->leerCitaPendiente($idUser, $mysqli_connection);
 ?>
 
 <!DOCTYPE html>
@@ -116,7 +114,7 @@
 
                     <div class="formulario-container">
                     <h2>Solicitar nueva cita</h2>    
-                    <form class="form_citas" id="form_citas" name="form_citas" method="POST" action="../controllers/c_citas.php">
+                    <form class="form_citas" id="form_citas" name="form_citas" method="POST" action="../../controllers/c_citas.php">
                         <div class="infoForm-container">
                             <div class="input-container">
                                 <label for="nombre_apellidos">Nombre y apellidos:</label>
@@ -139,6 +137,37 @@
                         </div>
                     </form>
                 </div>
+            </div>
+            <div class="citas_pendientes">
+                <?php if($citas){
+                    foreach($citas as $cita){
+                        ?>
+                        <div class="cita">
+                            <form class="form_citas" id="form_citas" name="form_citas" method="POST" action="../../controllers/c_citas.php">
+                                <div class="infoForm-container">
+                                    <div class="input-container">
+                                        <label for="fcita">Fecha:</label>
+                                        <input type="date" id="fcita" name="fcita" value="<?php echo $cita['fecha_cita'] ?>">
+                                        <small class="error" id="fcitaError"></small>
+                                    </div>
+                                    <div class="input-container">
+                                        <label for="asunto">Asunto:</label>
+                                        <input type="text" id="asunto" name="asunto" value="<?php echo $cita['motivo_cita'] ?>">
+                                        <small class="error" id="asuntoError"></small>
+                                    </div>
+                                    <div class="button-container_gestion_citas">
+                                        <input type="submit" name="actualizar" value="Actualizar cita">
+                                        <input type="submit" name="borrar" value="Borrar cita">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                <?php
+                }
+                ?>
             </div>
             
         </main>

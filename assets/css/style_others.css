@@ -208,3 +208,32 @@
     margin-top: 1em;
     text-align: center;
 }
+.citas_pendientes{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1.5em;
+    justify-content:space-between;
+}
+.cita{
+    width: 30%;
+    margin: 1em;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.button-container_gestion_citas{
+    display: flex;
+    margin-top: 20px;
+    gap: 1em;
+}
+.button-container_gestion_citas input{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all .3s ease;
+    font-size: 20px;
+}
+.button-container_gestion_citas input:hover{
+    background-color: rgb(248, 193, 148);
+    transform: translateY(-5px);
+}

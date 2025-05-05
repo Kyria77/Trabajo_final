@@ -2,7 +2,6 @@
     require_once '../controllers/clases/Cl_Noticias.php';
     $noticiaObj = new Noticia();
     $noticias = $noticiaObj->leerNoticia($mysqli_connection);
-    //print_r($noticias);
 
     //Comprobar si existe una sesión activa y en caso de que no así la crearemos
     if(session_status() == PHP_SESSION_NONE){
