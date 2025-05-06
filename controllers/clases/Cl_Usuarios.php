@@ -95,17 +95,15 @@ class Usuario{
     }
 
     //Función para buscar a un usuario y sus datos a través del id en la tabla users_data de la base de datos
-    public function leerUsuarioById($id, $mysqli_connection, &$exception_error){
+    public function leerUsuarioById($id, $mysqli_connection){
         $select_stmt = null;
 
         try{
             //Sentencia SQL
-            $select_stmt = $mysqli_connection->prepare('SELECT * FROM users_data WHERE idUser = ?');
+            $select_stmt = $mysqli_connection->prepare('SELECT * FROM users_data ud JOIN users_login ul ON ud.idUser = ul.idUser WHERE ud.idUser = ?;');
 
             if($select_stmt === false){
                 error_log("No se preparó la sentencia: " . $mysqli_connection->error);
-                $exception_error = true;
-                echo "No he preparado la sentencia";
                 return false;
             }
 
@@ -114,7 +112,6 @@ class Usuario{
             //Comprobamos si podemos ejecutar la sentencia
             if(!$select_stmt->execute()){
                 error_log(("No se ejecutó la sentencia: ") . $select_stmt->error);
-                $exception_error = true;
                 return false;
             }
 
@@ -129,7 +126,6 @@ class Usuario{
 
         }catch(Exception $e){
             error_log(("Error en la función comprobarUsuario: " . $e->getMessage()));
-            $exception_error = true;
             return false;
         }finally{
             if($select_stmt !== null){
@@ -203,6 +199,9 @@ class Usuario{
         }
     }
 
+/*********************************************FUNCIONES USERS ********************************************************************************
+ * *******************************************************************************************************************************************
+ * ******************************************************************************************************************************************/
 
     //Función para buscar a un usuario y sus datos a través del email en la tabla users_login de la base de datos
     public function read_user_login($email, $mysqli_connection, &$exception_error){
@@ -331,18 +330,18 @@ class Usuario{
     }
 
     //Función para actualizar los datos de un usuario en la tabla users_login de la base de datos
-    public function update_user_login($idUser, $password, $mysqli_connection){
+    public function update_user_login($idUser, $password, $rol, $mysqli_connection){
         $insert_stmt = null;
 
         try{
-            $query = "UPDATE users_login SET pass = ? WHERE idUser = ?";
+            $query = "UPDATE users_login SET pass = ?, rol = ? WHERE idUser = ?";
             $insert_stmt = $mysqli_connection->prepare($query);
 
             if(!$insert_stmt){
                 error_log("No se preparó la sentencia de actualización: " . $mysqli_connection->error);
                 return false;
             }else{
-                $insert_stmt->bind_param("ss", $password, $idUser);
+                $insert_stmt->bind_param("sss", $password, $rol, $idUser);
 
                 if(!$insert_stmt->execute()){
                     error_log(("No se ejecutó la sentencia de inserción: ") . $insert_stmt->error);
@@ -356,6 +355,135 @@ class Usuario{
             header('Location: ../../views/errors/error500.html');
         }
     }
+
+
+/*********************************************FUNCIONES ADMIN ********************************************************************************
+ * *******************************************************************************************************************************************
+ * ******************************************************************************************************************************************/
+
+
+    //Función para LEER a todos los usuarios y sus datos en las tablas users_data y users_login de la base de datos como ADMIN
+    public function leerTodosUsuariosAdmin($mysqli_connection){
+        $select_stmt = null;
+
+        try{
+            $select_stmt = $mysqli_connection->prepare('SELECT * FROM users_data ud JOIN users_login ul ON ud.idUser = ul.idUser');
+
+            if($select_stmt === false){
+                error_log("No se preparó la sentencia: " . $mysqli_connection->error);
+                return false;
+            }
+
+            if(!$select_stmt->execute()){
+                error_log(("No se ejecutó la sentencia: ") . $select_stmt->error);
+                return false;
+            }
+
+            $result = $select_stmt->get_result();
+            $usuarios = [];
+
+            if($result->num_rows > 0){
+                while($fila = $result->fetch_assoc()){
+                    $usuarios[] = $fila;
+                }
+                return $usuarios;
+            }else{
+                echo "No hay noticias disponibles";
+                return false;
+            }
+
+        }catch(Exception $e){
+            error_log(("Error en la función comprobarUsuario: " . $e->getMessage()));
+            return false;
+        }
+    }
+
+
+
+    //Función para actualizar los datos de un usuario en la tabla users_login de la base de datos
+    public function update_user_login_admin($idUser, $rol, $mysqli_connection){
+        $insert_stmt = null;
+
+        try{
+            $query = "UPDATE users_login SET rol = ? WHERE idUser = ?";
+            $insert_stmt = $mysqli_connection->prepare($query);
+
+            if(!$insert_stmt){
+                error_log("No se preparó la sentencia de actualización: " . $mysqli_connection->error);
+                return false;
+            }else{
+                $insert_stmt->bind_param("ss", $rol, $idUser);
+
+                if(!$insert_stmt->execute()){
+                    error_log(("No se ejecutó la sentencia de inserción: ") . $insert_stmt->error);
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+        }catch(Exception $e){
+            error_log(("Error en la función insertarUsuario: " . $e->getMessage()));
+            header('Location: ../../views/errors/error500.html');
+        }
+    }
+
+
+
+
+
+    //Función para borrar un usuario en la tabla users_data de la base de datos
+    public function borrar_user_data($idUser, $mysqli_connection){
+        $insert_stmt = null;
+
+        try{
+            $query = "DELETE FROM users_data WHERE idUser = ?";
+            $insert_stmt = $mysqli_connection->prepare($query);
+
+            if(!$insert_stmt){
+                error_log("No se preparó la sentencia de borrado: " . $mysqli_connection->error);
+                return false;
+            }else{
+                $insert_stmt->bind_param("i", $idUser);
+
+                if(!$insert_stmt->execute()){
+                    error_log(("No se ejecutó la sentencia de borrado: ") . $insert_stmt->error);
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+        }catch(Exception $e){
+            error_log(("Error en la función borrar_user_data: " . $e->getMessage()));
+            header('Location: ../../views/errors/error500.html');
+        }
+    }
+    //Función para borrar un usuario en la tabla users_login de la base de datos
+    public function borrar_user_login($idUser, $mysqli_connection){
+        $insert_stmt = null;
+
+        try{
+            $query = "DELETE FROM users_login WHERE idUser = ?";
+            $insert_stmt = $mysqli_connection->prepare($query);
+
+            if(!$insert_stmt){
+                error_log("No se preparó la sentencia de borrado: " . $mysqli_connection->error);
+                return false;
+            }else{
+                $insert_stmt->bind_param("i", $idUser);
+
+                if(!$insert_stmt->execute()){
+                    error_log(("No se ejecutó la sentencia de borrado: ") . $insert_stmt->error);
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+        }catch(Exception $e){
+            error_log(("Error en la función borrar_user_data: " . $e->getMessage()));
+            header('Location: ../../views/errors/error500.html');
+        }
+    }
+
     
 }
 

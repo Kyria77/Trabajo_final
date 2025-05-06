@@ -44,8 +44,9 @@
 
         try{
             $usuarioObj = new Usuario();
+            $rol = "user";
 
-            if($usuarioObj->actualizarUsuario($idUser, $nombre, $apellidos, $telefono, $fnac, $direccion, $sexo, $mysqli_connection) && $usuarioObj->update_user_login($idUser,$pass, $mysqli_connection)){
+            if($usuarioObj->actualizarUsuario($idUser, $nombre, $apellidos, $telefono, $fnac, $direccion, $sexo, $mysqli_connection) && $usuarioObj->update_user_login($idUser,$pass, $rol, $mysqli_connection)){
                 $_SESSION['user_data_all']['nombre'] = $nombre;
                 $_SESSION['user_data_all']['apellidos'] = $apellidos;
                 $_SESSION['user_data_all']['telefono'] = $telefono;
@@ -53,6 +54,7 @@
                 $_SESSION['user_data_all']['pass'] = $pass;
                 $_SESSION['user_data_all']['direccion'] = $direccion;
                 $_SESSION['user_data_all']['sexo'] = $sexo;
+                $_SESSION['user_data_all']['rol'] = $rol;
                 
                 $_SESSION['mensaje_exito'] = "El usuario se ha actualizado correctamente";
                 header("Location: ../views/users/perfil.php");

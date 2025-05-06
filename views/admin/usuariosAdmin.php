@@ -11,7 +11,8 @@
         $_SESSION["mensaje_error"] = "Lo sentimos, debes iniciar sesión primero";
         header("Location: ../../views/login.php");
         exit();
-
+    }else{
+        $user_data = $_SESSION['user_data_all'];
     }
 ?>
 
@@ -56,13 +57,12 @@
         <main>
             <div class="main_cabecera">
                 <div class="cartel_login">
-                    <h2>PERFIL</h2>
+                    <h2>User Admin</h2>
                 </div>
                 <nav class="main_nav_content">
                     <ul class="main_navLinks">
-                        <li><a class="inn_login" href="#">Perfil</a></li>
-                        <li><a class="out_login" href="citas.php">Citas</a></li>
-                        <li><a class="out_login" href="../../controllers/cerrar_sesion.php">Cerrar sesión</a></li>
+                        <li><a class="inn_login" href="#">Insertar</a></li>
+                        <li><a class="out_login" href="updateDelete.php">Modificar y Borrar</a></li>
                     </ul>
                 </nav>
             </div>
@@ -89,26 +89,26 @@
             </div>
 
             <div class="formulario-container">
-                <form class="form_actualizar" id="form_registro" name="form_actualizar" method="POST" action="../../controllers/c_perfil.php">
+                <form class="form_actualizar" id="form_registro" name="form_insert_admin" method="POST" action="../../controllers/c_userAdmin.php">
                     <div class="infoForm-container">
                         <div class="input-container">
                             <label for="nombre">Nombre:</label>
-                            <input type="text" id="nombre" name="nombre" value="<?php echo $user_data['nombre']; ?>">
+                            <input type="text" id="nombre" name="nombre">
                             <small class="error" id="nombreError"></small>
                         </div>
                         <div class="input-container">
                             <label for="apellidos">Apellidos:</label>
-                            <input type="text" id="apellidos" name="apellidos" value="<?php echo $user_data['apellidos']; ?>">
+                            <input type="text" id="apellidos" name="apellidos">
                             <small class="error" id="apellidosError"></small>
                         </div>
                         <div class="input-container">
                             <label for="telefono">Teléfono:</label>
-                            <input type="tel" id="telefono" name="telefono" value="<?php echo $user_data['telefono']; ?>">
+                            <input type="tel" id="telefono" name="telefono">
                             <small class="error" id="telefonoError"></small>
                         </div>
                         <div class="input-container">
                             <label for="email">Email:</label>
-                            <input type="text" id="email" name="email" value="<?php echo $user_data['email']; ?>" disabled>
+                            <input type="text" id="email" name="email">
                             <small class="error" id="emailError"></small>
                         </div>
                         <div class="input-container">
@@ -118,33 +118,35 @@
                         </div>
                         <div class="input-container">
                             <label for="fnac">Fecha de nacimiento:</label>
-                            <input type="date" id="fnac" name="fnac" value="<?php echo $user_data['fnac']; ?>">
+                            <input type="date" id="fnac" name="fnac">
                             <small class="error" id="fnacError"></small>
                         </div>
                         <div class="input-container">
                             <label for="direccion">Dirección:</label>
-                            <input type="text" id="direccion" name="direccion" value="<?php echo $user_data['direccion']; ?>">
+                            <input type="text" id="direccion" name="direccion">
                             <small class="error" id="direccionError"></small>
                         </div>
                         <div class="input-container">
                             <label for="sexo">Sexo:</label>
                             <select id="selectFormacion" name="sexo">
-                                <option value="Prefiero no responder" <?php echo ($user_data['sexo'] == 'Prefiero no responder') ? 'selected' : ''; ?>>Prefiero no responder</option>
-                                <option value="Femenino" <?php echo ($user_data['sexo'] == 'Femenino') ? 'selected' : ''; ?>>Femenino</option>
-                                <option value="Masculino" <?php echo ($user_data['sexo'] == 'Masculino') ? 'selected' : ''; ?>>Masculino</option>
+                                <option value="Prefiero no responder">Prefiero no responder</option>
+                                <option value="Femenino">Femenino</option>
+                                <option value="Masculino">Masculino</option>
+                            </select>
+                        </div>
+                        <div class="input-container">
+                            <label for="rol">Rol:</label>
+                            <select id="selectFormacion" name="rol">
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
                             </select>
                         </div>
                         <div class="input_container password_show">
                             <label for="check_password">Mostrar contraseña</label>
                             <input type="checkbox" id="check_password">
                         </div>
-                        <div class="input-container">
-                            <label for="privacidad">He leído la política de privacidad:</label>
-                            <input type="checkbox" id="privacidad" name="privacidad">
-                            <small class="error" id="privacidadError"></small>
-                        </div>
                         <div class="button-container_login">
-                            <input type="submit" name="actualizar" value="Actualizar datos">
+                            <input type="submit" name="insertarAdmin" value="Insertar usuario">
                         </div>
                     </div>
                 </form>

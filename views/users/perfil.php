@@ -78,11 +78,7 @@
                     }
                     ?>
                 </nav>
-                <div class="presentation_content">
-                    <h1>Únete</h1>
-                    <p>Regístrate para beneficiarte de todo lo que ofrecemos</p>
-                    <p>¿Nos acompañamos?</p>
-                </div>
+
             </div>
         </header>
 

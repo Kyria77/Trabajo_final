@@ -51,6 +51,47 @@ class Cita{
     }
 
 
+    public function leerCitaPendienteAdmin($idUser, $mysqli_connection){
+        $select_stmt = null;
+    
+        try{
+            $select_stmt = $mysqli_connection->prepare('SELECT ud.nombre, ud.apellidos, ud.email, c.idUser, c.idCita, c.fecha_cita, c.motivo_cita FROM citas c JOIN users_data ud ON c.idUser = ud.idUser WHERE fecha_cita >= CURDATE() AND c.idUser = ? ORDER BY c.fecha_cita;');
+    
+            if($select_stmt === false){
+                error_log("No se pudo preparar la sentencia" . $mysqli_connection->error);
+                return false;
+            }
+
+            $select_stmt->bind_param("i", $idUser);
+    
+            if(!$select_stmt->execute()){
+                error_log(("No se pudo ejecutar la sentencia " . $mysqli_connection->error));
+                return false;
+            }
+    
+            $result = $select_stmt->get_result();
+            $citas = [];
+    
+            if($result->num_rows > 0){
+                while($fila = $result->fetch_assoc()){
+                    $citas[] = $fila;
+                }
+                return $citas;
+            }else{
+                echo "No hay noticias disponibles";
+                return false;
+            }
+        }catch(Exception $e){
+            error_log("Error al ejecutar la función: " . $e->getMessage());
+            return false;
+        } finally{
+            if($select_stmt !== null){
+                $select_stmt->close();
+            }
+        }
+    }
+
+
     //Función para INSERTAR una nueva cita de un usuario en la base de datos
     public function insertarCita($idUser, $fcita, $asunto, $mysqli_connection, &$exception_error){
         $insert_stmt = null;

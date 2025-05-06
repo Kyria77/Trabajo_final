@@ -15,6 +15,7 @@
     }
 
     $userObj = new Usuario();
+    $idUser = $_SESSION['user_data_all']['idUser'];
     $usuarios = $userObj->leerTodosUsuariosAdmin($mysqli_connection);
 ?>
 
@@ -44,8 +45,8 @@
                     <ul class="navLinks">
                         <li><a class="out" href="../../index.php">Inicio</a></li>
                         <li><a class="out" href="../noticias.php">Noticias</a></li>
-                        <li><a class="out" href="usuariosAdmin.php">User Admin</a></li>
-                        <li><a class="inn" href="#">Citas Admin</a></li>
+                        <li><a class="inn" href="#">User Admin</a></li>
+                        <li><a class="out" href="citasAdmin.php">Citas Admin</a></li>
                         <li><a class="out" href="noticiasAdmin.php">Noticias Admin</a></li>
                         <li><a class="out" href="../users/perfil.php">Perfil</a></li>
                         <li><a class="out" href="../../controllers/cerrar_sesion.php">Cerrar sesión</a></li>
@@ -59,8 +60,14 @@
         <main>
             <div class="main_cabecera">
                 <div class="cartel_login">
-                    <h2>Citas Admin</h2>
+                    <h2>User Admin</h2>
                 </div>
+                <nav class="main_nav_content">
+                    <ul class="main_navLinks">
+                        <li><a class="out_login" href="usuariosAdmin.php">Insertar</a></li>
+                        <li><a class="inn_login" href="#">Modificar y Borrar</a></li>
+                    </ul>
+                </nav>
             </div>
 
             <div class="aviso_registro">
@@ -89,7 +96,7 @@
                     foreach($usuarios as $usuario){
                         ?>
                         <div class="cita">
-                            <form class="form_citas" id="form_citas" name="form_citas" method="POST" action="../../controllers/c_citasAdmin.php">
+                            <form class="form_citas" id="form_citas" name="form_citas" method="POST" action="../../controllers/c_userAdmin.php">
                                 <input type="hidden" name="idUser" value="<?php echo $usuario['idUser']; ?>">
                                 <div class="infoForm-container">
                                     <div class="input-container">
@@ -103,7 +110,8 @@
                                         <small class="error" id="emailError"></small>
                                     </div>
                                     <div class="button-container_gestion_citas">
-                                        <input type="submit" name="verCitas" value="Ver citas">
+                                        <input type="submit" name="actualizar" value="Modificar usuario">
+                                        <input type="submit" name="borrar" value="Borrar usuario">
                                     </div>
                                 </div>
                             </form>
