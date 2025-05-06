@@ -118,6 +118,14 @@
     border: 1px solid black;
     border-radius: 10px;
 }
+.formulario-container h2{
+    text-align: center;
+    margin-top: 1.5em;
+}
+.formulario-container p{
+    margin: 1.5em;
+    padding-left: 1.5em;
+}
 .infoForm-container, .envioForm-container{
     padding: 40px;
     display: flex;

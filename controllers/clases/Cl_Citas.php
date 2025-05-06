@@ -78,7 +78,6 @@ class Cita{
                 }
                 return $citas;
             }else{
-                echo "No hay noticias disponibles";
                 return false;
             }
         }catch(Exception $e){
@@ -177,11 +176,6 @@ class Cita{
             header('Location: ../../views/errors/error500.html');
         }
     }
-
-
-
-
-
     
 }
 ?>

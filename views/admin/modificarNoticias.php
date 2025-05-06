@@ -1,7 +1,8 @@
 <?php
     require_once __DIR__ . '/../../config/config.php';
+    require_once '../../controllers/clases/Cl_Noticias.php';
 
-    # Comprobar si existe una sesión activa y en caso de que no así la crearemos
+    //Comprobar si existe una sesión activa y en caso de que no así la crearemos
     if(session_status() == PHP_SESSION_NONE){
         session_start();
     }
@@ -11,9 +12,11 @@
         $_SESSION["mensaje_error"] = "Lo sentimos, debes iniciar sesión primero";
         header("Location: ../../views/login.php");
         exit();
-    }else{
-        $user_data = $_SESSION['user_data_all'];
     }
+
+    $noticiaObj = new Noticia();
+    $noticias = $noticiaObj->leerNoticia($mysqli_connection);
+
 ?>
 
 <!DOCTYPE html>
@@ -61,8 +64,8 @@
                 </div>
                 <nav class="main_nav_content">
                     <ul class="main_navLinks">
-                        <li><a class="inn_login" href="#">Insertar</a></li>
-                        <li><a class="out_login" href="modificarNoticias.php">Modificar y Borrar</a></li>
+                        <li><a class="out_login" href="noticiasAdmin.php">Insertar</a></li>
+                        <li><a class="inn_login" href="#">Modificar y Borrar</a></li>
                     </ul>
                 </nav>
             </div>
@@ -88,51 +91,65 @@
                 ?>
             </div>
 
-            <div class="formulario-container">
-                <h2>Crear noticia nueva</h2>
-                <p>Para insertar la imagen, debes solicitar primero que la introduzcan en la carpeta del proyecto, después, cuando rellenes el formulario solamente debes escribir el nombre del archivo, por ejemplo: ejemplo.png</p>
-                <form class="form_actualizar" id="form_registro" name="form_insert_admin" method="POST" action="../../controllers/c_noticiasAdmin.php">
-                    <div class="infoForm-container">
-                        <div class="input-container">
-                            <label for="titulo">Título:</label>
-                            <input type="text" id="titulo" name="titulo" required>
-                            <small class="error" id="tituloError"></small>
+            <div class="citas_pendientes">
+                <?php if($noticias){
+                    foreach($noticias as $noticia){
+                        ?>
+                        <div class="cita">
+                            <form class="form_citas" id="form_noticias" name="form_noticias" method="POST" action="../../controllers/c_noticiasAdmin.php">
+                                <input type="hidden" name="idNoticia" value="<?php echo $noticia['idNoticia']; ?>">
+                                <input type="hidden" name="idImagen" value="<?php echo $noticia['idImagen']; ?>">
+                                <input type="hidden" name="idUser" value="<?php echo $noticia['idUser']; ?>">
+                                <div class="infoForm-container">
+                                <div class="input-container">
+                                    <label for="titulo">Título:</label>
+                                    <input type="text" id="titulo" name="titulo" value="<?php echo $noticia['NotiTitulo']; ?>">
+                                </div>
+                                <div class="input-container">
+                                    <label for="texto">Texto:</label>
+                                    <textarea name="texto" rows="6"><?php echo $noticia['texto']; ?>"</textarea>
+                                </div>
+                                <div class="input-container">
+                                    <label for="fcreacion">Fecha de creación:</label>
+                                    <input type="date" id="fcreacion" name="fcreacion" value="<?php echo $noticia['fecha_creacion']; ?>">
+                                </div>
+                                <div class="input-container">
+                                    <label for="idUser">Creador:</label>
+                                    <input type="text" id="idUser" name="idUser" value="<?php echo $noticia['userNombre'] . ' ' . $noticia['apellidos']; ?>">
+                                </div>
+                                <div class="input-container">
+                                    <label for="imagen">Imagen:</label>
+                                    <input type="text" id="imagen" name="imagen" value="<?php echo $noticia['imaNombre']; ?>">
+                                    <small class="error" id="imagenError"></small>
+                                </div>
+                                <div class="input-container">
+                                    <label for="alternativo">Título alternativo (alt):</label>
+                                    <input type="text" id="alternativo" name="alternativo" value="<?php echo $noticia['alt']; ?>">
+                                    <small class="error" id="alternativoError"></small>
+                                </div>
+                                <div class="input-container">
+                                    <label for="anchura">Anchura imagen::</label>
+                                    <input type="text" id="anchura" name="anchura" value="<?php echo $noticia['width']; ?>">
+                                    <small class="error" id="anchuraError"></small>
+                                </div>
+                                <div class="input-container">
+                                    <label for="altura">Altura imagen:</label>
+                                    <input type="text" id="altura" name="altura" value="<?php echo $noticia['heigth']; ?>">
+                                    <small class="error" id="alturaError"></small>
+                                </div>
+                                    <div class="button-container_gestion_citas">
+                                        <input type="submit" name="actualizar" value="Modificar noticia">
+                                        <input type="submit" name="borrar" value="Borrar noticia">
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <div class="input-container">
-                            <label for="texto">Texto:</label>
-                            <textarea name="texto" rows="6" required></textarea>
-                            <small class="error" id="apellidosError"></small>
-                        </div>
-                        <div class="input-container">
-                            <label for="fcreacion">Fecha de creación:</label>
-                            <input type="date" id="fcreacion" name="fcreacion" required>
-                            <small class="error" id="apellidosError"></small>
-                        </div>
-                        <div class="input-container">
-                            <label for="imagen">Imagen:</label>
-                            <input type="text" id="imagen" name="imagen" required>
-                            <small class="error" id="imagenError"></small>
-                        </div>
-                        <div class="input-container">
-                            <label for="alternativo">Título alternativo (alt):</label>
-                            <input type="text" id="alternativo" name="alternativo">
-                            <small class="error" id="alternativoError"></small>
-                        </div>
-                        <div class="input-container">
-                            <label for="anchura">Anchura imagen::</label>
-                            <input type="text" id="anchura" name="anchura">
-                            <small class="error" id="anchuraError"></small>
-                        </div>
-                        <div class="input-container">
-                            <label for="altura">Altura imagen:</label>
-                            <input type="text" id="altura" name="altura">
-                            <small class="error" id="alturaError"></small>
-                        </div>
-                        <div class="button-container_login">
-                            <input type="submit" name="crearNoticia" value="Crear noticia">
-                        </div>
-                    </div>
-                </form>
+                        <?php
+                    }
+                    ?>
+                <?php
+                }
+                ?>
             </div>
             
         </main>
@@ -166,7 +183,6 @@
             </div>
         </footer>
 
-        <script src="../../assets/scripts/show_password.js"></script>
-        <script src="../../assets/scripts/validacion_registro.js"></script>
+        <script src="../../assets/scripts/validacion_citas.js"></script>
     </body>
 </html>

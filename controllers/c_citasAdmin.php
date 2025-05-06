@@ -10,14 +10,14 @@
     }
 
 
-        //Comprobamos que la información nos llega por POST y por el formulario 'actualizar'.
-        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['verCitas'])){
+    //Comprobamos que la información nos llega por POST y por el formulario 'ver citas'.
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['verCitas'])){
 
-            $idUser = $_POST['idUser'];
-            $_SESSION['idUser_citas'] = $idUser;
-            header('Location: ../views/admin/modificarCitas.php');
+        $idUser = $_POST['idUser'];
+        $_SESSION['idUser_citas'] = $idUser;
+        header('Location: ../views/admin/modificarCitas.php');
     
-        }
+    }
 
     //Comprobamos que la información nos llega por POST y por el formulario 'citas'.
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['cita'])){
