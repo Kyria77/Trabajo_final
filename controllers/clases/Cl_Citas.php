@@ -37,7 +37,6 @@ class Cita{
                 }
                 return $citas;
             }else{
-                echo "No hay noticias disponibles";
                 return false;
             }
         }catch(Exception $e){

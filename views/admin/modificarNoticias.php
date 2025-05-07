@@ -99,7 +99,7 @@
                             <form class="form_citas" id="form_noticias" name="form_noticias" method="POST" action="../../controllers/c_noticiasAdmin.php">
                                 <input type="hidden" name="idNoticia" value="<?php echo $noticia['idNoticia']; ?>">
                                 <input type="hidden" name="idImagen" value="<?php echo $noticia['idImagen']; ?>">
-                                <input type="hidden" name="idUser" value="<?php echo $noticia['idUser']; ?>">
+                                <input type="hidden" name="idUser" value="<?php echo $noticia['identUser']; ?>">
                                 <div class="infoForm-container">
                                 <div class="input-container">
                                     <label for="titulo">Título:</label>
@@ -107,7 +107,7 @@
                                 </div>
                                 <div class="input-container">
                                     <label for="texto">Texto:</label>
-                                    <textarea name="texto" rows="6"><?php echo $noticia['texto']; ?>"</textarea>
+                                    <textarea name="texto" rows="6"><?php echo $noticia['texto']; ?></textarea>
                                 </div>
                                 <div class="input-container">
                                     <label for="fcreacion">Fecha de creación:</label>
@@ -115,7 +115,7 @@
                                 </div>
                                 <div class="input-container">
                                     <label for="idUser">Creador:</label>
-                                    <input type="text" id="idUser" name="idUser" value="<?php echo $noticia['userNombre'] . ' ' . $noticia['apellidos']; ?>">
+                                    <input type="text" id="creador" name="creador" value="<?php echo $noticia['userNombre'] . ' ' . $noticia['apellidos']; ?>" disabled>
                                 </div>
                                 <div class="input-container">
                                     <label for="imagen">Imagen:</label>

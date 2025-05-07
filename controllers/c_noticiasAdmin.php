@@ -14,8 +14,6 @@
         $_SESSION["mensaje_error"] = "Lo sentimos, debes iniciar sesión primero";
         header("Location: ../../views/login.php");
         exit();
-    }else{
-        $user_data = $_SESSION['user_data_all'];
     }
 
 
@@ -78,11 +76,11 @@
 
             if($noticiaObj->actualizarImagen($idImagen, $imagen, $alternativo, $anchura, $altura, $mysqli_connection)){
                 if($noticiaObj->actualizarNoticia($idNoticia, $titulo, $idImagen, $texto, $fcreacion, $idUser, $mysqli_connection)){
-                    $_SESSION['mensaje_exito'] = "La cita se ha actualizado correctamente";
-                    header("Location: ../views/admin/modificarCitas.php");
+                    $_SESSION['mensaje_exito'] = "La noticia se ha actualizado correctamente";
+                    header("Location: ../views/admin/modificarNoticias.php");
                     exit();
                 }else{
-                    $_SESSION['mensaje_error'] = "La cita no se ha podido registrar";
+                    $_SESSION['mensaje_error'] = "La noticia no se ha podido registrar";
                     header('Location: ../views/errors/error500.html');
                     exit();
                 }
@@ -107,13 +105,13 @@
             $idNoticia = $_POST['idNoticia'];
             $idImagen = $_POST['idImagen'];
 
-            if($noticiaObj->borrarImagen($idImagen, $mysqli_connection)){
-                if($noticiaObj->borrarNoticia($idNoticia, $mysqli_connection)){
-                    $_SESSION['mensaje_exito'] = "La cita se ha borrado correctamente";
-                    header("Location: ../views/admin/modificarCitas.php");
+            if($noticiaObj->borrarNoticia($idNoticia, $mysqli_connection)){
+                if($noticiaObj->borrarImagen($idImagen, $mysqli_connection)){
+                    $_SESSION['mensaje_exito'] = "La noticia se ha borrado correctamente";
+                    header("Location: ../views/admin/modificarNoticias.php");
                     exit();
                 }else{
-                    $_SESSION['mensaje_error'] = "La cita no se ha podido borrar";
+                    $_SESSION['mensaje_error'] = "La noticia no se ha podido borrar";
                     header('Location: ../views/errors/error500.html');
                     exit();
                 }
