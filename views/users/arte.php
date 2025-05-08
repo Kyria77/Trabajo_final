@@ -1,13 +1,13 @@
 <?php
-    # Comprobar si existe una sesión activa y en caso de que no así la crearemos
+    //Comprobar si existe una sesión activa y en caso de que no así la crearemos
     if(session_status() == PHP_SESSION_NONE){
         session_start();
     }
 
-    # Redirigir al LOGIN si el usuario no ha iniciaco sesión (es decir, si no existe user_id)
+    //Redirigir al LOGIN si el usuario no ha iniciaco sesión (es decir, si no existe user_id)
     if(!isset($_SESSION['user_data_all'])){
         $_SESSION["mensaje_error"] = "Lo sentimos, debes iniciar sesión primero";
-        header("Location: ../../views/login.php");
+        header("Location: ../login.php");
         exit();
 
     }
@@ -64,7 +64,7 @@
             </div>
         </header>
 
-        <!--Comenzamos con Main. Consta de XXX secciones:-->
+        <!--Comenzamos con Main. Consta de 1 sección:-->
         <main>
             <div class="main_cabecera">
                 <div class="cartel_inspirate">

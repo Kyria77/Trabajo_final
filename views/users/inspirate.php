@@ -9,7 +9,7 @@
     //Redirigir al LOGIN si el usuario no ha iniciaco sesión (es decir, si no existe user_id)
     if(!isset($_SESSION['user_data_all'])){
         $_SESSION["mensaje_error"] = "Lo sentimos, debes iniciar sesión primero";
-        header("Location: ../../views/login.php");
+        header("Location: ../login.php");
         exit();
 
     }
@@ -66,7 +66,7 @@
             </div>
         </header>
 
-        <!--Comenzamos con Main. Consta de XXX secciones:-->
+        <!--Comenzamos con Main. Consta de 1 sección:-->
         <main>
             <div class="cartel_inspirate">
                 <h2>INSPÍRATE</h2>

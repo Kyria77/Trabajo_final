@@ -12,7 +12,7 @@
         $user_data = $_SESSION['user_data_all'];
     }else{
         $_SESSION["mensaje_error"] = "Lo sentimos, debes iniciar sesión primero";
-        header("Location: ../../views/login.php");
+        header("Location: ../login.php");
         exit();
     }
 
@@ -66,7 +66,7 @@
             </div>
         </header>
 
-        <!--Comenzamos con Main. Consta de XXX secciones:-->
+        <!--Comenzamos con Main. Consta de 2 secciones:-->
         <main>
             <div class="main_cabecera">
                 <div class="cartel_citas">

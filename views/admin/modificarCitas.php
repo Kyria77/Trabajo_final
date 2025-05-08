@@ -13,7 +13,7 @@
         $user_data = $_SESSION['user_data_all'];
     }else{
         $_SESSION["mensaje_error"] = "Lo sentimos, debes iniciar sesión primero";
-        header("Location: ../../views/login.php");
+        header("Location: ../login.php");
         exit();
     }
     if (isset($_SESSION['idUser_citas'])) {

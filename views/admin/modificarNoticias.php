@@ -7,10 +7,10 @@
         session_start();
     }
 
-    # Redirigir al LOGIN si el usuario no ha iniciaco sesión (es decir, si no existe user_id)
+    //Redirigir al LOGIN si el usuario no ha iniciaco sesión (es decir, si no existe user_id)
     if(!isset($_SESSION['user_data_all']) && $_SESSION['user_data_all']['rol'] !== 'admin'){
         $_SESSION["mensaje_error"] = "Lo sentimos, debes iniciar sesión primero";
-        header("Location: ../../views/login.php");
+        header("Location: ../login.php");
         exit();
     }
 
@@ -159,7 +159,7 @@
             <div class="footer_sociales">
                 <ul class="redes">
                     <li>
-                        <a href="https://www.instagram.es" title="Enlace a Instagram">
+                        <a href="https://www.instagram.com" title="Enlace a Instagram">
                             <img src="../../assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
                         </a>
                     </li>

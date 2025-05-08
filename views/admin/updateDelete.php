@@ -2,15 +2,15 @@
     require_once __DIR__ . '/../../config/config.php';
     require_once '../../controllers/clases/Cl_Usuarios.php';
 
-    # Comprobar si existe una sesión activa y en caso de que no así la crearemos
+    //Comprobar si existe una sesión activa y en caso de que no así la crearemos
     if(session_status() == PHP_SESSION_NONE){
         session_start();
     }
 
-    # Redirigir al LOGIN si el usuario no ha iniciaco sesión (es decir, si no existe user_id)
+    //Redirigir al LOGIN si el usuario no ha iniciaco sesión (es decir, si no existe user_id)
     if(!isset($_SESSION['user_data_all']) && $_SESSION['user_data_all']['rol'] !== 'admin'){
         $_SESSION["mensaje_error"] = "Lo sentimos, debes iniciar sesión primero";
-        header("Location: ../../views/login.php");
+        header("Location: ../login.php");
         exit();
     }
 
@@ -56,7 +56,7 @@
             </div>
         </header>
 
-        <!--Comenzamos con Main. Consta de XXX secciones:-->
+        <!--Comenzamos con Main. Consta de X secciones:-->
         <main>
             <div class="main_cabecera">
                 <div class="cartel_login">
@@ -131,7 +131,7 @@
             <div class="footer_sociales">
                 <ul class="redes">
                     <li>
-                        <a href="https://www.instagram.es" title="Enlace a Instagram">
+                        <a href="https://www.instagram.com" title="Enlace a Instagram">
                             <img src="../../assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
                         </a>
                     </li>
