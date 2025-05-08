@@ -1,8 +1,5 @@
 <?php
     require_once '../controllers/clases/Cl_Noticias.php';
-    $noticiaObj = new Noticia();
-    $noticias = $noticiaObj->leerNoticia($mysqli_connection);
-    //print_r($noticias);
 
     //Comprobar si existe una sesión activa y en caso de que no así la crearemos
     if(session_status() == PHP_SESSION_NONE){
@@ -42,9 +39,9 @@
                             <li><a class="out" href="users/inspirate.php">INSPÍRATE</a></li>
                             <li><a class="out" href="users/agenda.php">AGENDA</a></li>
                             <li><a class="out" href="users/perfil.php">PERFIL</a></li>
-                            <li><a class="out" href="users/cerrar_sesion.php">CERRAR SESIÓN</a></li>
+                            <li><a class="out" href="../controllers/cerrar_sesion.php">CERRAR SESIÓN</a></li>
                             <li>
-                                <a href="https://www.instagram.es" title="Enlace a Instagram">
+                                <a href="https://www.instagram.com" title="Enlace a Instagram">
                                     <img src="../assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
                                 </a>
                             </li>
@@ -75,7 +72,7 @@
                             <li><a class="out" href="registro.php">REGISTRARSE</a></li>
                             <li><a class="out" href="login.php">LOGIN</a></li>
                             <li>
-                                <a href="https://www.instagram.es" title="Enlace a Instagram">
+                                <a href="https://www.instagram.com" title="Enlace a Instagram">
                                     <img src="../assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
                                 </a>
                             </li>
@@ -89,11 +86,17 @@
                     }
                     ?>
                 </nav>
-                <div class="presentation_content">
-                    <h1>Únete</h1>
-                    <p>Regístrate para beneficiarte de todo lo que ofrecemos</p>
-                    <p>¿Nos acompañamos?</p>
-                </div>
+                <?php
+                    if(!isset($_SESSION['user_data_all'])){
+                ?>
+                        <div class="presentation_content">
+                            <h1>Únete</h1>
+                            <p>Regístrate para beneficiarte de todo lo que ofrecemos</p>
+                            <p>¿Nos acompañamos?</p>
+                        </div>
+                <?php
+                    }
+                ?>
             </div>
         </header>
 

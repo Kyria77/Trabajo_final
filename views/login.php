@@ -35,7 +35,7 @@
                         <li><a class="out" href="registro.php">REGISTRARSE</a></li>
                         <li><a class="inn" href="#">LOGIN</a></li>
                         <li>
-                            <a href="https://www.instagram.es" title="Enlace a Instagram">
+                            <a href="https://www.instagram.com" title="Enlace a Instagram">
                                 <img src="../assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
                             </a>
                         </li>
@@ -126,7 +126,7 @@
             <div class="footer_sociales">
                 <ul class="redes">
                     <li>
-                        <a href="https://www.instagram.es" title="Enlace a Instagram">
+                        <a href="https://www.instagram.com" title="Enlace a Instagram">
                             <img src="../assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
                         </a>
                     </li>

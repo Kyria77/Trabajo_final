@@ -30,11 +30,11 @@
                 <nav class="nav_content">
                     <ul class="navLinks">
                         <li><a class="out" href="../index.php">INICIO</a></li>
-                        <li><a class="out" href="./steam_dia.php">STEAM AL DÍA</a></li>
+                        <li><a class="out" href="steam_dia.php">STEAM AL DÍA</a></li>
                         <li><a class="inn" href="#">REGISTRARSE</a></li>
-                        <li><a class="out" href="./login.php">LOGIN</a></li>
+                        <li><a class="out" href="login.php">LOGIN</a></li>
                         <li>
-                            <a href="https://www.instagram.es" title="Enlace a Instagram">
+                            <a href="https://www.instagram.com" title="Enlace a Instagram">
                                 <img src="../assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
                             </a>
                         </li>
@@ -53,7 +53,7 @@
             </div>
         </header>
 
-        <!--Comenzamos con Main. Consta de XXX secciones:-->
+        <!--Comenzamos con Main. Consta de 1 sección:-->
         <main>
             <div class="main_cabecera">
                 <div class="cartel_registro">
@@ -62,7 +62,7 @@
                 <nav class="main_nav_content">
                     <ul class="main_navLinks">
                         <li><a class="inn_registro" href="#">Registrarse</a></li>
-                        <li><a class="out_registro" href="./login.php">Iniciar sesión</a></li>
+                        <li><a class="out_registro" href="login.php">Iniciar sesión</a></li>
                     </ul>
                 </nav>
             </div>
@@ -163,7 +163,7 @@
             <div class="footer_sociales">
                 <ul class="redes">
                     <li>
-                        <a href="https://www.instagram.es" title="Enlace a Instagram">
+                        <a href="https://www.instagram.com" title="Enlace a Instagram">
                             <img src="../assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
                         </a>
                     </li>
