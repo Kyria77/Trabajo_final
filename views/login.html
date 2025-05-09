@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Steam&Co</title>
+        <meta name="description" content="Página de acompañamiento educativo para docentes científicos">
+        <meta name="Author" content="Verónica Montero">
+        <meta name="keywords" content="docente, acompañamiento, alumno, ciencias, biologia, tecnologia, fisica, ideas clases, competenciales, actividad">
+        <meta name="revisit-after" content="2 days">
+
+        <link rel="stylesheet" href="../assets/css/style.css">
+        <link rel="stylesheet" href="../assets/css/style_others.css">
+        <link rel="icon" type="image/png" href="../favicon.png">
+    </head>
+    <body>
+        <!--Comenzamos con Header, nuetra cabecera con el logo, la barra de navegación e introducción-->
+        <header>
+            <div class="logo">
+                <img src="../assets/images/Steam_blanco.png" alt="logo steam&Co" width="414" height="216" title="Logo">
+            </div>
+            <div class="header_content">
+                <nav class="nav_content">
+                    <ul class="navLinks">
+                        <li><a class="out" href="../index.html">INICIO</a></li>
+                        <li><a class="out" href="./steam_dia.html">STEAM AL DÍA</a></li>
+                        <li><a class="out" href="./registro.html">REGISTRARSE</a></li>
+                        <li><a class="inn" href="#">LOGIN</a></li>
+                        <li>
+                            <a href="https://www.instagram.es" title="Enlace a Instagram">
+                                <img src="../assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com" title="Enlace a YouTube">
+                                <img src="../assets/images/youtube.png" alt="icono de YouTube" width="32" height="32" title="icono YouTube">
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="presentation_content">
+                    <h1>Únete</h1>
+                    <p>Regístrate para beneficiarte de todo lo que ofrecemos</p>
+                    <p>¿Nos acompañamos?</p>
+                </div>
+            </div>
+        </header>
+
+        <!--Comenzamos con Main. Consta de XXX secciones:-->
+        <main>
+            <div class="main_cabecera">
+                <div class="cartel_login">
+                    <h2>LOGIN</h2>
+                </div>
+                <nav class="main_nav_content">
+                    <ul class="main_navLinks">
+                        <li><a class="out_login" href="./registro.html">Registrarse</a></li>
+                        <li><a class="inn_login" href="#">Iniciar sesión</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="main_registro_content">
+                <div class="registro_presentacion">
+                    <p>El nombre de usuario será el email con el que te registraste.</p>
+                </div>
+    
+                <div class="formulario-container">
+                    <form class="form_login" id="form_login" name="form_login" method="post" action="#">
+                        <div class="infoForm-container">
+                            <div class="input-container">
+                                <label for="email">Usuario:</label>
+                                <input type="email" id="email" name="email">
+                                <small class="error" id="emailError"></small>
+                            </div>
+                            <div class="input-container">
+                                <label for="password">Contraseña:</label>
+                                <input type="password" id="password" name="password">
+                                <small class="error" id="passwordError"></small>
+                            </div>
+                            <div class="input_container password_show">
+                                <label for="check_password">Mostrar contraseña</label>
+                                <input type="checkbox" id="check_password">
+                            </div>
+                            <div class="button-container_login">
+                                <input type="submit" name="login" value="Iniciar sesión">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+        </main>
+
+        <!--Comenzamos con el Footer, con los derechos, datos de la empresa, iconos redes sociales-->
+        <footer>
+            <div class="footer_sociales">
+                <ul class="redes">
+                    <li>
+                        <a href="https://www.instagram.es" title="Enlace a Instagram">
+                            <img src="../assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com" title="Enlace a YouTube">
+                            <img src="../assets/images/youtube.png" alt="icono de YouTube" width="32" height="32" title="icono YouTube">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer_copyright">
+                <h3>Contáctanos:</h3>
+                    <p>Steam&Co</p>
+                    <p>Calle la Colegiata, Nº 7 Nava (Asturias)</p>
+                    <p>Teléfono móvil: 670 80 90 50</p>
+                    <p>&copy; Steam&Co</p>
+                    <p>Aviso Legal | Política de Cookies | Política de Privacidad</p>
+            </div>
+            <div class="footer_logo">
+                <img src="../assets/images/steam_footer.png" alt="logo steam&Co" width="166" height="81" title="Logo">
+            </div>
+        </footer>
+
+        <script src="../assets/scripts/show_password.js"></script>
+        <script src="../assets/scripts/validacion_login.js"></script>
+    </body>
+</html>
