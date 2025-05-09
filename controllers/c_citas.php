@@ -7,6 +7,13 @@
     if(session_status() == PHP_SESSION_NONE){
         session_start();
     }
+
+    //Redirigir al LOGIN si el usuario no ha iniciaco sesión (es decir, si no existe user_id)
+    if(!isset($_SESSION['user_data_all'])){
+        $_SESSION["mensaje_error"] = "Lo sentimos, debes iniciar sesión primero";
+        header("Location: ../views/login.php");
+        exit();
+    }
     
 
     //Comprobamos que la información nos llega por POST y por el formulario 'citas'.

@@ -7,11 +7,8 @@
     //Comprobamos si existe una sesión activa, y si no hay, la creamos.
     if(session_status() == PHP_SESSION_NONE){
         session_start();
-        //var_dump($_POST);
-        //exit;
     }
 
-    //echo "He iniciado sesión";
 
     //Comprobamos que la información nos llega por POST y por el formulario 'registro'.
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['registro'])){
@@ -26,12 +23,10 @@
         $direccion = htmlspecialchars($_POST['direccion']);
         $sexo = $_POST['sexo'];
 
-        //echo "He saneado el formulario";
 
         //Ejecutamos la función de validar el formulario de registro que está en el archivo valodationData.php
         $errores_validacion = validacion_registro($nombre, $apellidos, $telefono, $email, $password, $fnac, $direccion);
 
-        //echo "HE validado el formulario";
 
         //Si hay errores de validación, los metemos en una variable de sesión
         if(!empty($errores_validacion)){
@@ -61,12 +56,8 @@
             }else{
                 if($usuarioObj->insertarUsuario($nombre, $apellidos, $email, $telefono, $fnac, $direccion, $sexo, $mysqli_connection, $exception_error)){
                     $_SESSION['mensaje_exito'] = "El usuario se ha registrado en data perfectamente";
-                    //header("Location: ../views/registro.php");
-                    //exit();
                 }else{
                     $_SESSION['mensaje_error'] = "El usuario no se ha podido registrar";
-                    //header('Location: ../views/errors/error500.html');
-                    //exit();
                 }
 
                 $datosUsuario = $usuarioObj->leerUsuarioByEmail($email, $mysqli_connection, $exception_error);

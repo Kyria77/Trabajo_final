@@ -4,8 +4,15 @@
     require_once __DIR__ . '/../config/config.php';
     require_once __DIR__ . '/clases/Cl_Usuarios.php';
 
-     if(session_status() == PHP_SESSION_NONE){
+    if(session_status() == PHP_SESSION_NONE){
         session_start();
+    }
+
+    //Redirigir al LOGIN si el usuario no ha iniciaco sesión (es decir, si no existe user_id)
+    if(!isset($_SESSION['user_data_all'])){
+        $_SESSION["mensaje_error"] = "Lo sentimos, debes iniciar sesión primero";
+        header("Location: ../views/login.php");
+        exit();
     }
 
 

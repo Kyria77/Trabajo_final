@@ -18,13 +18,11 @@ class Noticia{
     
             if($select_stmt === false){
                 error_log("No se pudo preparar la sentencia" . $mysqli_connection->error);
-                //echo "No se pudo preparar la sentencia";
                 return false;
             }
     
             if(!$select_stmt->execute()){
                 error_log(("No se pudo ejecutar la sentencia " . $mysqli_connection->error));
-                //echo "No se pudo ejecutar la sentencia";
                 return false;
             }
     

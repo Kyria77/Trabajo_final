@@ -9,8 +9,15 @@
         session_start();
     }
 
+    //Redirigir al LOGIN si el usuario no ha iniciaco sesión (es decir, si no existe user_id)
+    if(!isset($_SESSION['user_data_all']) && $_SESSION['user_data_all']['rol'] !== 'admin'){
+        $_SESSION["mensaje_error"] = "Lo sentimos, debes iniciar sesión primero";
+        header("Location: ../views/login.php");
+        exit();
+    }
 
-    //Comprobamos que la información nos llega por POST y por el formulario 'ver citas'.
+
+    //Comprobamos que la información nos llega por POST y por el formulario 'vercitas'.
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['verCitas'])){
 
         $idUser = $_POST['idUser'];

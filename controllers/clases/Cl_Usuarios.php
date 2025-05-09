@@ -87,11 +87,7 @@ class Usuario{
             error_log(("Error en la función comprobarUsuario: " . $e->getMessage()));
             $exception_error = true;
             return false;
-        }/*finally{
-            if($select_stmt !== null){
-                $select_stmt->close();
-            }
-        }*/
+        }
     }
 
     //Función para buscar a un usuario y sus datos a través del id en la tabla users_data de la base de datos
@@ -145,7 +141,6 @@ class Usuario{
             if(!$insert_stmt){
                 error_log("No se preparó la sentencia de inserción: " . $mysqli_connection->error);
                 $exception_error = true;
-                echo "No he preparado la sentencia";
                 return false;
             }else{
                 $insert_stmt->bind_param("sssssss", $nombre, $apellidos, $email, $telefono, $fnac, $direccion, $sexo);
@@ -161,15 +156,7 @@ class Usuario{
         }catch(Exception $e){
             error_log(("Error en la función insertarUsuario: " . $e->getMessage()));
             header('Location: ../../views/errors/error500.html');
-        }/*finally{
-            if(isset($insert_stmt) && ($insert_stmt)){
-                $insert_stmt->close();
-            }
-
-            if(isset($mysqli_connection) && ($mysqli_connection)){
-                $mysqli_connection->close();
-            }
-        }*/
+        }
     }
 
     //Función para actualizar los datos de un usuario en la tabla users_data de la base de datos
@@ -214,7 +201,6 @@ class Usuario{
             if($select_stmt === false){
                 error_log("No se preparó la sentencia: " . $mysqli_connection->error);
                 $exception_error = true;
-                echo "No he preparado la sentencia";
                 return false;
             }
 
@@ -258,7 +244,6 @@ class Usuario{
             if(!$insert_stmt){
                 error_log("No se preparó la sentencia de inserción user login: " . $mysqli_connection->error);
                 $exception_error = true;
-                echo "No he preparado la sentencia";
                 return false;
             }else{
                 $insert_stmt->bind_param("ssss", $idUser, $email, $password, $rol);
@@ -274,15 +259,7 @@ class Usuario{
         }catch(Exception $e){
             error_log(("Error en la función insertarUsuario: " . $e->getMessage()));
             header('Location: ../../views/errors/error500.html');
-        }/*finally{
-            if(isset($insert_stmt) && ($insert_stmt)){
-                $insert_stmt->close();
-            }
-
-            if(isset($mysqli_connection) && ($mysqli_connection)){
-                $mysqli_connection->close();
-            }
-        }*/
+        }
     }
 
 
@@ -388,7 +365,6 @@ class Usuario{
                 }
                 return $usuarios;
             }else{
-                echo "No hay noticias disponibles";
                 return false;
             }
 

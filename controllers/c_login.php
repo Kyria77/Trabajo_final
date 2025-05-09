@@ -7,11 +7,8 @@
     //Comprobamos si existe una sesión activa, y si no hay, la creamos.
     if(session_status() == PHP_SESSION_NONE){
         session_start();
-        //exit;
     }
 
-    //var_dump($_POST);
-    //echo "He iniciado sesión";
 
     //Comprobamos que la información nos llega por POST y por el formulario 'registro'.
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['form_origen']) && $_POST['form_origen'] === 'login'){
@@ -20,12 +17,8 @@
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
         $password = htmlspecialchars($_POST['password']);
 
-        //echo "He saneado el formulario";
-
         //Ejecutamos la función de validar el formulario de registro que está en el archivo valodationData.php
         $errores_validacion = validar_login($email, $password);
-
-        //echo "HE validado el formulario";
 
         //Si hay errores de validación, los metemos en una variable de sesión
         if(!empty($errores_validacion)){
