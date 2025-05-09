@@ -58,8 +58,20 @@
                             </li>
                         </ul>
                     <?php
-                    }
-                    ?>
+                    }else{
+                        ?>
+                            <ul class="navLinks">
+                                <li><a class="out" href="../../index.php">Inicio</a></li>
+                                <li><a class="out" href="../noticias.php">Noticias</a></li>
+                                <li><a class="out" href="../admin/usuariosAdmin.php">User Admin</a></li>
+                                <li><a class="out" href="../admin/citasAdmin.php">Citas Admin</a></li>
+                                <li><a class="out" href="../admin/noticiasAdmin.php">Noticias Admin</a></li>
+                                <li><a class="out" href="perfil.php">Perfil</a></li>
+                                <li><a class="out" href="../../controllers/cerrar_sesion.php">Cerrar sesión</a></li>
+                            </ul>
+                        <?php
+                        }
+                        ?>
                 </nav>
             </div>
         </header>

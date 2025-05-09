@@ -53,28 +53,40 @@
                             </li>
                         </ul>
                     <?php
-                    }else{
-                    ?>
-                        <ul class="navLinks">
-                            <li><a class="out" href="../index.php">INICIO</a></li>
-                            <li><a class="inn" href="#">STEAM AL DÍA</a></li>
-                            <li><a class="out" href="registro.php">REGISTRARSE</a></li>
-                            <li><a class="out" href="login.php">LOGIN</a></li>
-                            <li>
-                                <a href="https://www.instagram.com" title="Enlace a Instagram">
-                                    <img src="../assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.youtube.com" title="Enlace a YouTube">
-                                    <img src="../assets/images/youtube.png" alt="icono de YouTube" width="32" height="32" title="icono YouTube">
-                                </a>
-                            </li>
-                        </ul>
-                    <?php
-                    }
-                    ?>
-                </nav>
+                    }else if(isset($_SESSION['user_data_all']) && $_SESSION['user_data_all']['rol'] == 'admin'){
+                        ?>
+                            <ul class="navLinks">
+                                <li><a class="out" href="../index.php">Inicio</a></li>
+                                <li><a class="inn" href="#">Noticias</a></li>
+                                <li><a class="out" href="admin/usuariosAdmin.php">User Admin</a></li>
+                                <li><a class="out" href="admin/citasAdmin.php">Citas Admin</a></li>
+                                <li><a class="out" href="admin/noticiasAdmin.php">Noticias Admin</a></li>
+                                <li><a class="out" href="users/perfil.php">Perfil</a></li>
+                                <li><a class="out" href="../controllers/cerrar_sesion.php">Cerrar sesión</a></li>
+                            </ul>
+                        <?php
+                        }else{
+                        ?>
+                            <ul class="navLinks">
+                                <li><a class="out" href="../index.php">INICIO</a></li>
+                                <li><a class="inn" href="#">STEAM AL DÍA</a></li>
+                                <li><a class="out" href="registro.php">REGISTRARSE</a></li>
+                                <li><a class="out" href="login.php">LOGIN</a></li>
+                                <li>
+                                    <a href="https://www.instagram.es" title="Enlace a Instagram">
+                                        <img src="../assets/images/instagram.png" alt="icono de Instagram" width="32" height="32" title="icono Instagram">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.youtube.com" title="Enlace a YouTube">
+                                        <img src="../assets/images/youtube.png" alt="icono de YouTube" width="32" height="32" title="icono YouTube">
+                                    </a>
+                                </li>
+                            </ul>
+                        <?php
+                        }
+                        ?>
+                    </nav>
                 <?php
                     if(!isset($_SESSION['user_data_all'])){
                 ?>
