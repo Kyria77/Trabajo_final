@@ -72,7 +72,7 @@ function validarPassword(){
     }else{
         passwordInput.classList.add('invalido');
         passwordInput.classList.remove('valido');
-        document.getElementById('passwordError').textContent = "La contraseña debe ser entre 4 y 10 caracteres y contener mayúscula, minúscula, 1 número y un caracter especial";
+        document.getElementById('passwordError').textContent = "La contraseña debe ser entre 4 y 10 caracteres y contener mayúscula, minúscula, 1 número y un caracter especial entre estos:.,_-";
     }
 }
 function validarDireccion(){

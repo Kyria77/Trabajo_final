@@ -33,7 +33,7 @@ function validacion_registro($nombre, $apellidos, $telefono, $email, $password, 
 
     //Validamos la password
     if(!preg_match(PASSWORD_VAL, $password)){
-        $errores['password'] = "- La contraseña deberá contener entre 4 y 10 caracteres e incluir una letra mayúscula, una minúscula, un número y un símbolo (.,_-).";
+        $errores['password'] = "- La contraseña deberá contener entre 4 y 10 caracteres e incluir una letra mayúscula, una minúscula, un número y un símbolo entre estos:.,_-";
     }
 
     //Validamos fecha nacimiento
@@ -80,7 +80,7 @@ function validar_login($email, $password){
 
     //Validación de la contraseña haciendo uso de la constante CONTRASENA_REGEX
     if(!preg_match(PASSWORD_VAL, $password)){
-        $errores['password'] = "- La contraseña deberá contener entre 4 y 10 caracteres e incluir de forma obligatoria una letra mayúscula, un número y un símbolo (.,_-)";
+        $errores['password'] = "- La contraseña deberá contener entre 4 y 10 caracteres e incluir de forma obligatoria una letra mayúscula, un número y un símbolo entre estos:.,_-";
     }
 
     return $errores;
@@ -107,7 +107,7 @@ function validacion_actualizacion($nombre, $apellidos, $telefono, $password, $fn
 
     //Validamos la password
     if(!preg_match(PASSWORD_VAL, $password)){
-        $errores['password'] = "- La contraseña deberá contener entre 4 y 10 caracteres e incluir una letra mayúscula, una minúscula, un número y un símbolo (.,_-).";
+        $errores['password'] = "- La contraseña deberá contener entre 4 y 10 caracteres e incluir una letra mayúscula, una minúscula, un número y un símbolo entre estos:.,_-";
     }
 
     //Validamos fecha nacimiento
