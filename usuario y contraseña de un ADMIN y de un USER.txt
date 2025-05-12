@@ -1,8 +1,8 @@
 USER:
-aurora@gmail.com
-Aurora0.
+juan@gmail.com
+Juan0.
 
 
 ADMIN:
-juan@gmail.com
-Juan0.
+vero@gmail.com
+Vero0.
